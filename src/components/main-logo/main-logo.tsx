@@ -7,7 +7,7 @@ export const MainLogo = () => {
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
         >
-            <g clip-path='url(#clip0_122_3004)'>
+            <g clipPath='url(#clip0_122_3004)'>
                 <path
                     d='M181.136 12.0834V0H177.053V19.9965H180.909L186.972 7.91479V19.9965H191.055V0H187.199L181.136 12.0834Z'
                     fill='white'

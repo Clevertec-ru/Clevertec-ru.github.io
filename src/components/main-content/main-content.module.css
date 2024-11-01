@@ -1,0 +1,31 @@
+.main {
+    flex: 1;
+    display: flex;
+    padding: var(--gap-0) 160px 186px;
+    gap: 94px;
+    background: transparent;
+}
+
+.blocksContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 190px);
+    grid-template-rows: repeat(2, 175px);
+    gap: 16px;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    border-radius: var(--border-radius-8);
+}
+
+.transparent {
+    background: transparent;
+}
+
+.background {
+    background: #b7003780;
+}

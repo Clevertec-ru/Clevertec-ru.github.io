@@ -1,0 +1,31 @@
+.radios {
+    display: flex;
+    gap: 46px;
+    padding-top: var(--gap-32);
+    padding-bottom: 37px;
+}
+
+.circle {
+    position: relative;
+    background-color: transparent !important;
+    border: 2px solid #ba875c !important;
+}
+
+.circle:before {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+    border-radius: var(--border-radius-circle);
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+input[type='radio']:checked + .circle:before {
+    background-color: #ba875c;
+    opacity: 1;
+}
