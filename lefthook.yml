@@ -1,0 +1,6 @@
+extends:
+    - ./node_modules/arui-presets-lint/lefthook/index.yml
+pre-commit:
+    commands:
+        check-ts:
+            run: yarn tsc --noEmit --incremental false
