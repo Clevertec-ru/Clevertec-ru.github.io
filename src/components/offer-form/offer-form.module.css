@@ -1,0 +1,11 @@
+.formContainer {
+    width: 642px;
+    background: #ffffff;
+    padding: 143px 40px 40px 40px;
+}
+
+.formTitle {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+}

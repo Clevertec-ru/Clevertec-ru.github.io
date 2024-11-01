@@ -1,0 +1,37 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    background: #ffffff;
+    padding: 21px 160px 29px 160px;
+    margin-top: -16px;
+    flex-wrap: wrap;
+}
+
+.footerBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footerHead {
+    text-transform: uppercase;
+    color: #9e0918;
+}
+
+.footerDetails {
+    color: #6a7078;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.footerPhone {
+    font-size: 26px;
+}
+
+@media (max-width: 800px) {
+    .footer {
+        padding: 21px 60px 29px 60px;
+    }
+}
