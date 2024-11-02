@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { Text } from '@alfalab/core-components/text';
+import classNames from 'classnames';
 
 import styles from './footer.module.css';
 
@@ -14,7 +13,9 @@ export const Footer = () => (
             </Text>
         </div>
         <div className={styles.footerBlock}>
-            <Text className={`${styles.footerHead} ${styles.footerPhone}`}>8 800 100 12 10</Text>
+            <Text className={classNames(styles.footerHead, styles.footerPhone)}>
+                8 800 100 12 10
+            </Text>
             <Text className={styles.footerDetails}>Бесплатный звонок по России</Text>
         </div>
     </footer>

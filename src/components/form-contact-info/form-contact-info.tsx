@@ -4,7 +4,7 @@ import { Grid } from '@alfalab/core-components/grid';
 import { Input } from '@alfalab/core-components/input';
 import { MaskedInput } from '@alfalab/core-components/masked-input';
 
-import { ReactComponent as InfoIcon } from '../../assets/info.svg';
+// import { ReactComponent as InfoIcon } from '../../assets/info.svg';
 
 export const FormContactInfo = () => {
     const [value, setValue] = useState('');
@@ -27,7 +27,8 @@ export const FormContactInfo = () => {
                     gap: '8px',
                 }}
             >
-                <InfoIcon /> ВАЖНО! На указаннный вами адрес электронной почты будет направлен пакет
+                {/* <InfoIcon /> */}
+                ВАЖНО! На указаннный вами адрес электронной почты будет направлен пакет
                 страховой документации
             </div>
             <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>

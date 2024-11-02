@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: var(--gap-0) auto;
+    box-shadow: var(--shadow-m);
+}
+
+.pageBackground {
+    background: url('/cover_large.png') no-repeat center top;
+    background-size: cover;
+}
+
+.header {
+    height: 124px;
+    padding: 52px var(--gap-0) 52px 160px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 720px) {
+    .header {
+        padding-left: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding-left: var(--gap-40);
+    }
+}
