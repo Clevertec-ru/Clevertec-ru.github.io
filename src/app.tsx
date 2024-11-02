@@ -5,6 +5,7 @@ import { MainPage } from './pages/main-page';
 import { Provider } from 'react-redux';
 import { configureAppStore } from './configure-store';
 import { FormPage } from './pages/form-page';
+import { Modals } from '~/components/modals';
 const store = configureAppStore();
 
 export const App = () => (
@@ -16,6 +17,7 @@ export const App = () => (
                 <Route path='/final' element={<MainPage />} />
                 <Route path='*' element={<div> Not Found</div>} />
             </Routes>
+            <Modals />
         </BrowserRouter>
     </Provider>
 );

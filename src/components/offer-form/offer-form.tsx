@@ -15,7 +15,7 @@ import { FinalBlock } from '../final-block';
 import { useAppDispatch, useAppSelector } from '~/hooks/typed-react-redux-hooks';
 import { offerFormSelector, setCost, setInsuranceAmount } from '~/redux/slices/offer-form';
 import { calculateInsurance } from '~/utils/calculate-insurance';
-import { openModal } from '~/redux/slices/modal';
+import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 import { useLocation } from 'react-router-dom';
 
 import styles from './offer-form.module.css';
@@ -32,7 +32,12 @@ export const OfferForm = () => {
     const isFinalPage = location.pathname.includes('final');
 
     const handleOpenModal = () => {
-        dispatch(openModal());
+        dispatch(
+            setModalOpen({
+                modal: ModalNames.INPUT_METHOD,
+                isOpen: true,
+            }),
+        );
     };
 
     useEffect(() => {
