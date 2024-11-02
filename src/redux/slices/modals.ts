@@ -12,7 +12,7 @@ export enum ModalNames {
 export type ModalState = { [K in ModalNames]: boolean };
 
 const initialState: ModalState = {
-    [ModalNames.EDIT_MODAL]: false,
+    [ModalNames.EDIT_MODAL]: true,
     [ModalNames.GOSUSLUG]: false,
     [ModalNames.INPUT_METHOD]: false,
     [ModalNames.NO_DATA]: false,

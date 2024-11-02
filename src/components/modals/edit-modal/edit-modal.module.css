@@ -1,0 +1,39 @@
+.btn,
+.activeBtn{
+    border-radius: 4px;
+    border: 1px solid #d3d5d9;
+    height: 60px;
+    font-size: 14px;
+    padding: 0 18px;
+}
+
+.activeBtn {
+    border-color: #990032;
+    background-color: #990032;
+
+    &:hover {
+        background-color: transparent;
+        color: #990032;
+    }
+}
+
+.header {
+    padding: 45px 64px 22px;
+
+    & > *:first-child > *:first-child {
+        padding-left: 0;
+        padding-bottom: 0;
+        font-size: 20px;
+        line-height: 120%;
+        color: #000;
+        opacity: 0.8;
+
+        & > * {
+            width: 80%;
+        }
+    }
+}
+
+.content {
+    padding: 64px;
+}

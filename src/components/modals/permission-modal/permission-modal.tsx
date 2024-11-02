@@ -3,6 +3,8 @@ import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
 
+import s from './permission-modal.module.css';
+import { Typography } from '@alfalab/core-components/typography';
 export const PermissionModal = () => {
     const { PERMISSIONS } = useSelector(modalsSelector);
     const dispatch = useDispatch();
@@ -25,14 +27,25 @@ export const PermissionModal = () => {
 
     return (
         <Modal open={PERMISSIONS}>
-            <Modal.Header>Требуется согласие на получение данных</Modal.Header>
-            <Modal.Content>
-                Для продолжения регистрации необходимо разрешить передачу данных ООО Росгосстрах
-                Жизнь на предыдущем шаге
+            <Modal.Header
+                hasCloser={false}
+                title={'Требуется согласие на получение данных'}
+                align={'center'}
+                className={s.header}
+            ></Modal.Header>
+            <Modal.Content className={s.content}>
+                <Typography.Text className={s.text}>
+                    Для продолжения регистрации необходимо разрешить передачу данных ООО Росгосстрах
+                    Жизнь на предыдущем шаге
+                </Typography.Text>
             </Modal.Content>
-            <Modal.Footer>
-                <Button onClick={handleOk}>Закрыть</Button>
-                <Button onClick={handleCancel}>Вернуться на Госуслуги</Button>
+            <Modal.Footer className={s.footer}>
+                <Button onClick={handleOk} view={'outlined'} className={s.btn}>
+                    Закрыть
+                </Button>
+                <Button onClick={handleCancel} view={'primary'} className={s.activeBtn}>
+                    Вернуться на Госуслуги
+                </Button>
             </Modal.Footer>
         </Modal>
     );

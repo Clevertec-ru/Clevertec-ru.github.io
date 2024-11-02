@@ -1,0 +1,34 @@
+.content {
+    font-size: 22px;
+    line-height: 1.2;
+    max-width: 256px;
+}
+
+.header {
+    padding: 45px 64px 28px;
+}
+
+.modalContent {
+    padding: 0 64px 50px;
+}
+
+.modalContent > p {
+    padding: 0;
+    margin: 0 0 45px 0;
+}
+
+.baseBtn,
+.blueBtn {
+    border: 1px solid #d3d5d9;
+    border-radius: 5px;
+    height: 60px;
+}
+
+.blueBtn {
+    border: 1px solid #0d4cd3;
+    color: #0d4cd3;
+
+    &:hover {
+        border: 1px solid #0d4cd3;
+    }
+}
