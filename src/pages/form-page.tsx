@@ -9,12 +9,23 @@ import { FormHeader } from '../components/form-header/form-header';
 import { FormInsuredPersonInfo } from '../components/form-insured-person-info/form-insured-person-info';
 import { FormPolicyholderInfo } from '../components/form-policyholder-info/form-policyholder-info';
 import { FormProgramParameters } from '../components/form-program-parameters/form-program-parameters';
+import { useDispatch } from 'react-redux';
+import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 
 export const FormPage = () => {
+    const dispatch = useDispatch();
     const [checked, setChecked] = useState({
         agree: true,
         delegate: true,
     });
+
+    const handleClick = () =>
+        dispatch(
+            setModalOpen({
+                modal: ModalNames.PAYMENT,
+                isOpen: true,
+            }),
+        );
 
     const handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
         setChecked((prevState) => ({
@@ -64,7 +75,11 @@ export const FormPage = () => {
                         }
                     />
                 </section>
-                <CustomButton size='s' style={{ marginLeft: '150px', backgroundColor: '#990032' }}>
+                <CustomButton
+                    size='s'
+                    style={{ marginLeft: '150px', backgroundColor: '#990032' }}
+                    onClick={handleClick}
+                >
                     Оплатить полис
                 </CustomButton>
             </div>
