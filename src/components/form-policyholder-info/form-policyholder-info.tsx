@@ -6,109 +6,98 @@ import { Input } from '@alfalab/core-components/input';
 import { Select } from '@alfalab/core-components/select';
 import { Space } from '@alfalab/core-components/space';
 import { UniversalDateInput } from '@alfalab/core-components/universal-date-input';
+import { DOCUMENT_OPTIONS, GENDER_OPTIONS } from '~/constants/options';
+import { GENERAL_SETTINGS } from '~/constants/general-settings';
 
 export const FormPolicyholderInfo = () => {
     const styleRow = {
         marginTop: '30px',
     };
 
-    const OPTIONS = [
-        { key: '1', content: 'мужской' },
-        { key: '2', content: 'женский' },
-    ];
-
-    const OPTIONS_1 = [
-        { key: '1', content: 'Паспорт РФ' },
-        { key: '2', content: 'Не паспорт РФ' },
-    ];
-
     return (
         <section>
             <h2>Сведения о страхователе (взрослом)</h2>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='12'>
-                        <Input placeholder='Ф.И.О.' block={true} label='Ф.И.О.' />
+                <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
+                    <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
+                        <Input placeholder='Ф.И.О.' label='Ф.И.О.' block={true}/>
                     </Grid.Col>
                 </Grid.Row>
             </div>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='6'>
+                <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
+                    <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Select
-                            allowUnselect={true}
-                            size={56}
                             placeholder='Документ подтверждающий личность'
                             label='Документ подтверждающий личность'
-                            options={OPTIONS_1}
-                            block={true}
+                            allowUnselect={true}
+                            options={DOCUMENT_OPTIONS}
+                            {...GENERAL_SETTINGS.INPUT_PROPS}
                         />
                     </Grid.Col>
-                    <Grid.Col width='6'>
-                        <Space direction='horizontal'>
-                            <Input placeholder='Серия' block={true} label='Серия' size={56} />
+                    <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
+                        <Space direction='horizontal' className='gaps' fullWidth={true}>
+                            <Input placeholder='Серия' label='Серия' maxLength={4} {...GENERAL_SETTINGS.INPUT_PROPS}/>
                             <Input
                                 placeholder='Номер'
+                                maxLength={6}
                                 type='number'
-                                block={true}
                                 label='Номер'
-                                size={56}
+                                {...GENERAL_SETTINGS.INPUT_PROPS}
                             />
                         </Space>
                     </Grid.Col>
                 </Grid.Row>
             </div>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='6'>
+                <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
+                    <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <UniversalDateInput
-                            block={true}
                             view='date'
                             label='Дата рождения'
                             picker={true}
-                            Calendar={Calendar}
                             clear={true}
-                            size={56}
+                            Calendar={Calendar}
+                            {...GENERAL_SETTINGS.INPUT_PROPS}
                         />
                     </Grid.Col>
-                    <Grid.Col width='6'>
+                    <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH} className='gaps'>
                         <Select
-                            allowUnselect={true}
-                            size={56}
                             placeholder='Пол'
                             label='Пол'
-                            options={OPTIONS}
-                            block={true}
+                            allowUnselect={true}
                             Arrow={false}
+                            options={GENDER_OPTIONS}
+                            {...GENERAL_SETTINGS.INPUT_PROPS}
                         />
                     </Grid.Col>
                 </Grid.Row>
             </div>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='12'>
-                        <Input placeholder='Место рождения' block={true} label='Место рождения' />
+                <Grid.Row>
+                    <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
+                        <Input placeholder='Место рождения' label='Место рождения' block={true}/>
                     </Grid.Col>
                 </Grid.Row>
             </div>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='12'>
+                <Grid.Row>
+                    <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
                         <Input
                             placeholder='Адрес регистрации'
-                            block={true}
                             label='Адрес регистрации'
+                            block={true}
                         />
                     </Grid.Col>
                 </Grid.Row>
             </div>
             <div style={styleRow}>
-                <Grid.Row gutter={{ mobile: 8, desktop: 16 }}>
-                    <Grid.Col width='12'>
+                <Grid.Row>
+                    <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
                         <Input
                             placeholder='Фактический адрес проживания:'
-                            block={true}
                             label='Фактический адрес проживания:'
+                            block={true}
                         />
                     </Grid.Col>
                 </Grid.Row>

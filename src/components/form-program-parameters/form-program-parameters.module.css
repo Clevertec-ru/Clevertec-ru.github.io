@@ -1,3 +1,20 @@
 .parameters {
     justify-content: space-between;
+    padding: 0px;
+}
+
+.secondary_btn {
+    background-color: #BA875C;
+    color: #fff
+}
+
+.secondary_btn:hover {
+    background-color: #ba865c89;
+}
+
+.total_btn {
+    background-color: #E9F0FF !important;
+    color: #252429 !important;
+    cursor: default !important;
+    margin-bottom: 20px;
 }
