@@ -1,0 +1,28 @@
+.blocksContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 190px);
+    grid-template-rows: repeat(2, 175px);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--gap-20) var(--gap-24);
+    color: var(--color-light-text-primary-inverted);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.block p {
+    margin-top: auto;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.background {
+    background: #b7003780;
+}
