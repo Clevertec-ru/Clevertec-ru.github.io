@@ -1,5 +1,5 @@
 .header {
-    background-image: url('../../assets/form-header-background.png');
+    background-image: url('/form-header-background.png');
     background-position: center;
     background-size: cover;
     padding: 54px var(--gap-0);
