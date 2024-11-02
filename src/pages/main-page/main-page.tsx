@@ -5,9 +5,9 @@ import { MainLogo } from '../../components/main-logo';
 import { MainContent } from '~/components/main-content';
 import { Footer } from '../../components/footer';
 
-import styles from './start-page.module.css';
+import styles from './main-page.module.css';
 
-export const StartPage = () => (
+export const MainPage = () => (
     <Space fullWidth={true} className={styles.container}>
         <div className={styles.pageBackground}>
             <header className={styles.header}>

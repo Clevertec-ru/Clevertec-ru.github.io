@@ -20,6 +20,12 @@
     align-items: center;
 }
 
+@media (max-width: 1200px) {
+    .header {
+        padding-left: 280px;
+    }
+}
+
 @media (max-width: 720px) {
     .header {
         padding-left: 100px;

@@ -2,30 +2,25 @@ import React from 'react';
 import { OfferForm } from '../offer-form';
 import classNames from 'classnames';
 import styles from './main-content.module.css';
+import { Blocks } from '../blocks';
+import { useLocation } from 'react-router-dom';
 
-const transparentClassName = classNames(styles.block, styles.transparent);
-const backgroundClassName = classNames(styles.block, styles.background);
+const getMainClass = (isFinalPage: boolean) => {
+    return classNames(styles.transparent, {
+        [styles.startMain]: isFinalPage,
+        [styles.main]: !isFinalPage,
+    });
+};
 
-export const MainContent = () => (
-    <main className={classNames(styles.main, styles.transparent)}>
-        <OfferForm />
-        <div className={styles.blocksContainer}>
-            <div className={transparentClassName}>
-                <img src='/arrows.svg' alt='arrowsIcon' />
-                <p>Гибкие условия программы</p>
-            </div>
-            <div className={backgroundClassName}>
-                <img src='/star.svg' alt='starIcon' />
-                <p>Быстрое оформление онлайн</p>
-            </div>
-            <div className={backgroundClassName}>
-                <img src='/cup.svg' alt='cupIcon' />
-                <p>Подходит для соревнований и тренировок</p>
-            </div>
-            <div className={transparentClassName}>
-                <img src='scales.svg' alt='scalesIcon' />
-                <p>Соответствует требованиям законодательства</p>
-            </div>
-        </div>
-    </main>
-);
+export const MainContent = () => {
+    const location = useLocation();
+
+    const isFinalPage = location.pathname.includes('final');
+
+    return (
+        <main className={getMainClass(isFinalPage)}>
+            <OfferForm />
+            {!isFinalPage && <Blocks />}
+        </main>
+    );
+};
