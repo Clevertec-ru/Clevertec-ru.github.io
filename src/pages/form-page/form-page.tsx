@@ -47,7 +47,7 @@ export const FormPage = () => {
 
     const logoClickHandler = () => {
         navigate('/');
-    }
+    };
 
     return (
         <React.Fragment>
@@ -57,10 +57,10 @@ export const FormPage = () => {
                 </h2>
                 <form name='form'>
                     <FormHeader />
-                    <FormProgramParameters parameters={parameters}/>
+                    <FormProgramParameters parameters={parameters} />
                     <FormContactInfo />
-                    {isChild &&  <FormPolicyholderInfo />}
-                    <FormInsuredPersonInfo isChild={isChild}/>
+                    {isChild && <FormPolicyholderInfo />}
+                    <FormInsuredPersonInfo isChild={isChild} />
                     <section style={{ border: 'none', padding: 0 }}>
                         <Checkbox
                             block={true}
@@ -70,8 +70,8 @@ export const FormPage = () => {
                             label={
                                 <div className='checkbox_label'>
                                     Я согласен на{' '}
-                                    <span className='highlight'>обработку персональных данных</span> и
-                                    ознакомился с{' '}
+                                    <span className='highlight'>обработку персональных данных</span>{' '}
+                                    и ознакомился с{' '}
                                     <span className='highlight'>
                                         Политикой в отношении обработки персональных данных
                                     </span>
@@ -85,8 +85,8 @@ export const FormPage = () => {
                             checked={checked.delegate}
                             label={
                                 <div className='checkbox_label'>
-                                    Я подтверждаю, что являюсь законным представителем ребенка (нужен
-                                    текст)
+                                    Я подтверждаю, что являюсь законным представителем ребенка
+                                    (нужен текст)
                                 </div>
                             }
                         />

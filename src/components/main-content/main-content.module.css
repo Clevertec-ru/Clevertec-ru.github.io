@@ -1,33 +1,43 @@
 .startMain,
 .main {
     flex: 1;
-    display: flex;
     padding-bottom: 186px;
-    justify-content: center;
-    gap: 94px;
-    background: transparent;
-    align-items: end;
 }
 
 .startMain {
-    justify-content: flex-start;
+    margin-right: auto;
     padding-left: 160px;
 }
 
+.content {
+    max-height: 800px;
+    display: flex;
+    justify-content: center;
+    gap: 94px;
+    background: transparent;
+}
+
 @media (max-width: 1200px) {
-    .main {
+    .content {
+        max-height: 1300px;
         flex-direction: column;
         align-items: center;
     }
 
     .startMain {
-        justify-content: center;
+        margin-right: var(--gap-0);
         padding-left: var(--gap-0);
     }
 }
 
+@media (max-width: 720px) {
+    .content {
+        max-height: 1500px;
+    }
+}
+
 @media (max-width: 500px) {
-    .main {
+    .content {
         padding-bottom: var(--gap-80);
         gap: 60px;
     }

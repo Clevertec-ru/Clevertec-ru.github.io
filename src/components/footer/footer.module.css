@@ -4,7 +4,7 @@
     align-items: center;
     gap: 32px;
     background: var(--color-light-base-bg-primary);
-    padding: 21px 160px 29px;
+    padding: 37px 160px 29px;
     margin-top: var(--gap-16-neg);
     flex-wrap: wrap;
 }

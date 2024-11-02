@@ -12,7 +12,7 @@ import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 import { OfferFormState } from '~/types/offer-form-types';
 import { GENERAL_SETTINGS } from '~/constants/general-settings';
 
-export const FormProgramParameters = ({parameters}: {parameters: OfferFormState}) => {
+export const FormProgramParameters = ({ parameters }: { parameters: OfferFormState }) => {
     const dispatch = useDispatch();
 
     const handleEditClick = () =>
@@ -22,7 +22,7 @@ export const FormProgramParameters = ({parameters}: {parameters: OfferFormState}
                 isOpen: true,
             }),
         );
-        
+
     return (
         <section>
             <h2>Параметры программы</h2>
@@ -52,13 +52,17 @@ export const FormProgramParameters = ({parameters}: {parameters: OfferFormState}
             <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                 <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                     <Button
-                        rightAddons={<div className='addon'><Amount
-                            value={parameters.insuranceAmount}
-                            minority={100}
-                            currency='RUB'
-                            view='withZeroMinorPart'
-                            bold={'none'}
-                        /></div>}
+                        rightAddons={
+                            <div className='addon'>
+                                <Amount
+                                    value={parameters.insuranceAmount}
+                                    minority={100}
+                                    currency='RUB'
+                                    view='withZeroMinorPart'
+                                    bold={'none'}
+                                />
+                            </div>
+                        }
                         className={styles.parameters}
                         {...GENERAL_SETTINGS.FORM_PARAMETERS_PROPS}
                     >
@@ -124,12 +128,12 @@ export const FormProgramParameters = ({parameters}: {parameters: OfferFormState}
                         rightAddons={
                             <div className='addon'>
                                 <Amount
-                                className={styles.amount}
-                                value={parameters.cost}
-                                minority={100}
-                                currency='RUB'
-                                view='withZeroMinorPart'
-                                bold={'full'}
+                                    className={styles.amount}
+                                    value={parameters.cost}
+                                    minority={100}
+                                    currency='RUB'
+                                    view='withZeroMinorPart'
+                                    bold={'full'}
                                 />
                             </div>
                         }

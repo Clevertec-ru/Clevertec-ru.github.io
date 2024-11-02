@@ -42,7 +42,6 @@ export const InsuranceModalForm = () => {
                     name={`startDate`}
                     label={<span className={styles.label}>Начало страхования</span>}
                     minDate={TODAY.valueOf()}
-                    className={styles.inputWrapper}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
                     block={true}

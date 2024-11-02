@@ -1,10 +1,10 @@
 .btn,
-.activeBtn{
-    border-radius: 4px;
+.activeBtn {
+    border-radius: var(--border-radius-4);
     border: 1px solid #d3d5d9;
     height: 60px;
     font-size: 14px;
-    padding: 0 18px;
+    padding: var(--gap-0) 18px;
 }
 
 .activeBtn {
@@ -20,12 +20,12 @@
 .footer {
     justify-content: center;
     gap: 30px;
-    border-top: 1px solid  #e7e9ed;
-    padding: 45px 64px 50px;
+    border-top: 1px solid #e7e9ed;
+    padding: 45px var(--gap-64) 50px;
 }
 
 .content {
-    padding: 28px 64px 40px !important;
+    padding: 28px var(--gap-64) var(--gap-40) !important;
 }
 
 .text {
@@ -35,10 +35,9 @@
 }
 
 .header {
-
     & > *:first-child {
         width: 70%;
-        margin: 0 auto;
+        margin: var(--gap-0) auto;
         font-size: 20px;
         line-height: 1.2;
     }

@@ -24,19 +24,17 @@
 }
 
 .inputBlock {
+    width: 170px;
     height: 56px;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 720px) {
     .select {
         padding: var(--gap-24) var(--gap-0);
     }
 
     .inputs {
         padding: var(--gap-24) var(--gap-0);
-    }
-
-    .inputs {
         flex-wrap: wrap;
     }
 

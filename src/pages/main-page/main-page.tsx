@@ -8,7 +8,7 @@ import { Footer } from '../../components/footer';
 import styles from './main-page.module.css';
 
 export const MainPage = () => (
-    <Space fullWidth={true} className={styles.container}>
+    <div className={styles.container}>
         <div className={styles.pageBackground}>
             <header className={styles.header}>
                 <MainLogo />
@@ -16,5 +16,5 @@ export const MainPage = () => (
             <MainContent />
         </div>
         <Footer />
-    </Space>
+    </div>
 );

@@ -20,14 +20,14 @@ export const FormContactInfo = () => {
     return (
         <section>
             <h2>Контактная информация</h2>
-            <div className={styles.contact_container} >
+            <div className={styles.contact_container}>
                 <InfoIcon />
                 ВАЖНО! На указаннный вами адрес электронной почты будет направлен пакет страховой
                 документации
             </div>
             <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                 <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
-                    <Input placeholder='Введите email' label='Email' type='email' block={true}/>
+                    <Input placeholder='Введите email' label='Email' type='email' block={true} />
                 </Grid.Col>
                 <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH} className='gaps'>
                     <MaskedInput
