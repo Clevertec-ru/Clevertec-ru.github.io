@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
+    "lint-css": "arui-presets-lint styles",
+    "lint-scripts": "arui-presets-lint scripts",
+    "format": "arui-presets-lint format",
+    "format:check": "arui-presets-lint format:check",
+    "lint": "yarn lint-css && yarn lint-scripts && yarn format:check",
+    "lint:fix": "yarn lint-css --fix && yarn lint-scripts --fix && yarn format",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -14,15 +19,21 @@
     "@reduxjs/toolkit": "^2.3.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
+    "eslint-plugin-react-refresh": "^0.4.14",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
+    "react-redux": "^9.1.2",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
+    "@types/node": "^22.8.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "arui-presets-lint": "8.0.0",
+    "eslint-define-config": "^2.1.0",
     "globals": "^15.11.0",
     "typescript": "~5.6.2",
     "vite": "^5.4.10"
