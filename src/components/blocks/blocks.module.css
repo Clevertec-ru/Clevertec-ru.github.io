@@ -1,4 +1,5 @@
 .blocksContainer {
+    margin-top: auto;
     display: grid;
     grid-template-columns: repeat(2, 190px);
     grid-template-rows: repeat(2, 175px);
@@ -13,6 +14,12 @@
     color: var(--color-light-text-primary-inverted);
     font-size: 16px;
     line-height: 1.2;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.block:hover {
+    transform: scale(1.05);
 }
 
 .block p {

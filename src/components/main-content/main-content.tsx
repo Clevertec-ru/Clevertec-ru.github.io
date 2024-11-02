@@ -19,8 +19,10 @@ export const MainContent = () => {
 
     return (
         <main className={getMainClass(isFinalPage)}>
-            <OfferForm />
-            {!isFinalPage && <Blocks />}
+            <div className={styles.content}>
+                <OfferForm />
+                {!isFinalPage && <Blocks />}
+            </div>
         </main>
     );
 };
