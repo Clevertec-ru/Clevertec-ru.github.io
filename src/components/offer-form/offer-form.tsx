@@ -16,7 +16,7 @@ import { offerFormSelector, setCost, setInsuranceAmount } from '~/redux/slices/o
 import { calculateInsurance } from '~/utils/calculate-insurance';
 
 import styles from './offer-form.module.css';
-import { openModal } from '~/redux/slices/modal';
+import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 
 const sortedSportOptions = SPORT_OPTIONS.sort((a, b) => a.content.localeCompare(b.content));
 
@@ -28,7 +28,12 @@ export const OfferForm = () => {
     const hasErrors = Object.values(errors).some((error) => error !== '');
 
     const handleOpenModal = () => {
-        dispatch(openModal());
+        dispatch(
+            setModalOpen({
+                modal: ModalNames.INPUT_METHOD,
+                isOpen: true,
+            }),
+        );
     };
 
     useEffect(() => {

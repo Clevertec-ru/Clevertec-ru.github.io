@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ModalNames, modalsSelector, setModalOpen } from '../../../store/modal-slice';
 import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
+import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
 
 export const PaymentFrameModal = () => {
     const { PAYMENT_FRAME } = useSelector(modalsSelector);

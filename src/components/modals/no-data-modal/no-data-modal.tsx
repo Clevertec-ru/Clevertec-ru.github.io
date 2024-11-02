@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { modalsSelector } from '../../../store/modal-slice';
 import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
+import { modalsSelector } from '~/redux/slices/modals.ts';
 
 export const NoDataModal = () => {
     const { NO_DATA } = useSelector(modalsSelector);
