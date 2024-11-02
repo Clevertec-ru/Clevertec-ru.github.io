@@ -1,12 +1,7 @@
 .startMain,
 .main {
     flex: 1;
-    display: flex;
     padding-bottom: 186px;
-    justify-content: center;
-    gap: 94px;
-    background: transparent;
-    align-items: end;
 }
 
 .startMain {
@@ -14,8 +9,17 @@
     padding-left: 160px;
 }
 
+.content {
+    max-height: 800px;
+    display: flex;
+    justify-content: center;
+    gap: 94px;
+    background: transparent;
+}
+
 @media (max-width: 1200px) {
-    .main {
+    .content {
+        max-height: 1280px;
         flex-direction: column;
         align-items: center;
     }
@@ -27,7 +31,7 @@
 }
 
 @media (max-width: 500px) {
-    .main {
+    .content {
         padding-bottom: var(--gap-80);
         gap: 60px;
     }

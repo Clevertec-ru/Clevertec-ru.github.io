@@ -10,6 +10,9 @@
 .pageBackground {
     background: url('/cover_large.png') no-repeat center top;
     background-size: cover;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
