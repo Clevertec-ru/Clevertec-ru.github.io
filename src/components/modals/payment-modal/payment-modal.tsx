@@ -13,11 +13,15 @@ import { Amount } from '@alfalab/core-components/amount';
 import styles from './payment.module.css';
 import { type ChangeEvent, useState } from 'react';
 import { Radio } from '@alfalab/core-components/radio';
-import { RadioGroup } from '@alfalab/core-components/radio-group';
+
+import spb from '../../../assets/sbp.svg';
+import visa from '../../../assets/visa1.svg';
+import mc from '../../../assets/mc.svg';
+import mir from '../../../assets/mir.svg';
+import { setIsVisa } from '~/redux/slices/app-slice.ts';
 
 export const PaymentModal = () => {
     const [value, setValue] = useState('notVisa');
-    const [isEqviring, setIsEqviring] = useState(false);
 
     const { PAYMENT } = useSelector(modalsSelector);
     const dispatch = useDispatch();
@@ -35,13 +39,15 @@ export const PaymentModal = () => {
         }));
     };
 
-    const handleBtnClick = () =>
+    const handleBtnClick = () => {
+        dispatch(setIsVisa(value === 'visa'));
         dispatch(
             setModalOpen({
                 modal: ModalNames.PAYMENT_FRAME,
                 isOpen: true,
             }),
         );
+    };
 
     const handleCancel = () =>
         dispatch(
@@ -50,10 +56,6 @@ export const PaymentModal = () => {
                 isOpen: false,
             }),
         );
-
-    const onChange = (_, payload) => {
-        setValue(payload.value);
-    };
 
     return (
         <Modal open={PAYMENT} size={600} wrapperClassName={styles.modal} onClose={handleCancel}>
@@ -112,28 +114,42 @@ export const PaymentModal = () => {
                 </Space>
                 <Divider />
                 <div>
-                    {/*<Typography.Title tag={'h2'}>Выберите вариант оплаты:</Typography.Title>*/}
-                    <div style={{ width: '100%' }}>
-                        <RadioGroup
-                            label={'Выберите вариант оплаты:'}
-                            onChange={onChange}
-                            value={value}
-                        >
-                            <GenericWrapper column={true} gap={24}>
+                    <div style={{ width: '100%', margin: '25px 0 30px' }}>
+                        <h2 className={styles.subtitle}>Выберите вариант оплаты:</h2>
+                        <Space direction={'vertical'} size={26} fullWidth={true}>
+                            <GenericWrapper justifyContent={'between'} grow={true}>
                                 <Radio
-                                    value={'notVisa'}
                                     size={24}
                                     label='Через систему быстрых платежей'
+                                    circleClassName={styles.circle}
+                                    contentClassName={styles.radioContent}
+                                    checked={value === 'notVisa'}
+                                    onChange={() => setValue('notVisa')}
                                     hint={
-                                        <div>
+                                        <div className={styles.hint}>
                                             Вы сможете оплатить через QR код или через ссылку для
                                             мгновенной оплаты. <a href='#'>Как это работает?</a>
                                         </div>
                                     }
                                 />
-                                <Radio value={'visa'} size={24} label='Банковской картой' />
+                                <img src={spb} width='80px' height='40px' />
                             </GenericWrapper>
-                        </RadioGroup>
+                            <GenericWrapper justifyContent={'between'} grow={true}>
+                                <Radio
+                                    size={24}
+                                    label='Банковской картой'
+                                    circleClassName={styles.circle}
+                                    contentClassName={styles.radioContent}
+                                    checked={value === 'visa'}
+                                    onChange={() => setValue('visa')}
+                                />
+                                <div className={styles.iconContainer}>
+                                    <img src={visa} width='44px' height='13px' />
+                                    <img src={mc} width='32px' height='25px' />
+                                    <img src={mir} width='55px' height='16px' />
+                                </div>
+                            </GenericWrapper>
+                        </Space>
                     </div>
                 </div>
                 <Divider />

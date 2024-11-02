@@ -16,7 +16,7 @@ const initialState: ModalState = {
     [ModalNames.GOSUSLUG]: false,
     [ModalNames.INPUT_METHOD]: false,
     [ModalNames.NO_DATA]: false,
-    [ModalNames.PAYMENT]: true,
+    [ModalNames.PAYMENT]: false,
     [ModalNames.PAYMENT_FRAME]: false,
     [ModalNames.PERMISSIONS]: false,
 };
