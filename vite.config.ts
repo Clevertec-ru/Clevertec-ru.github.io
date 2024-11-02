@@ -13,10 +13,5 @@ export default defineConfig({
         alias: {
             '~': path.resolve(__dirname, 'src'),
         },
-        resolve: {
-            alias: {
-                '~': path.resolve(__dirname, 'src'),
-            },
-        },
     },
 });
