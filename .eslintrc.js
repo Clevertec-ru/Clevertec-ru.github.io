@@ -1,7 +1,7 @@
 module.exports = {
     extends: [require.resolve('arui-presets-lint/eslint')],
     parserOptions: {
-        project: ['./tsconfig.eslint.json', './cypress/tsconfig.json'],
+        project: ['./tsconfig.eslint.json', './tsconfig.json'],
     },
     overrides: [
         {
