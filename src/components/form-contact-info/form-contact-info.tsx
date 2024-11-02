@@ -4,7 +4,7 @@ import { Grid } from '@alfalab/core-components/grid';
 import { Input } from '@alfalab/core-components/input';
 import { MaskedInput } from '@alfalab/core-components/masked-input';
 
-// import { ReactComponent as InfoIcon } from '../../assets/info.svg';
+// import { ReactComponent as InfoIcon } from '/info.svg';
 
 export const FormContactInfo = () => {
     const [value, setValue] = useState('');
