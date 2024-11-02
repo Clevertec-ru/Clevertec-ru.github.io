@@ -26,3 +26,18 @@
     height: 80px;
     width: 1px;
 }
+
+
+@media screen and (max-width: 1024px) {
+    .header_title {
+        margin-left: var(--left-tablet-margin);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .header_title {
+        margin-left: var(--gap-20);
+        font-size: 22px;
+    }
+}
