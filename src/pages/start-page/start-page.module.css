@@ -28,6 +28,6 @@
 
 @media (max-width: 500px) {
     .header {
-        padding-left: 40px;
+        padding-left: var(--gap-40);
     }
 }
