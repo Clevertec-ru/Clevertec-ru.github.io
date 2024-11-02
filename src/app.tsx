@@ -7,6 +7,7 @@ import { configureAppStore } from './configure-store';
 import { FormPage } from './pages/form-page';
 import { Modals } from '~/components/modals';
 import { Roots } from '~/types/roots.ts';
+
 const store = configureAppStore();
 
 export const App = () => (
