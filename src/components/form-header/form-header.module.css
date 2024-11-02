@@ -1,0 +1,28 @@
+.header {
+    background-image: url('../../assets/form-header-background.png');
+    background-position: center;
+    background-size: cover;
+    padding: 54px var(--gap-0);
+    color: var(--color-light-text-primary-inverted);
+    display: flex;
+    align-items: center;
+    gap: 72px;
+    max-height: 160px;
+}
+
+.header_title {
+    font-size: 40px;
+    position: relative;
+    margin: var(--gap-0) 0 0 150px;
+}
+
+.header_title:after {
+    content: '';
+    background: rgba(100, 100, 100, 0.3);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -36px;
+    height: 80px;
+    width: 1px;
+}

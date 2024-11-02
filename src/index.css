@@ -25,3 +25,31 @@ h4,
 h5 {
     margin: var(--gap-0);
 }
+
+:root {
+    --checkbox-checked-bg-color: #ba875c;
+    --checkbox-checked-hover-bg-color: #ba865c79;
+}
+
+section {
+    border: 1px solid rgba(100, 100, 100, 0.3);
+    max-width: 832px;
+    padding: var(--gap-40) 45px 46px var(--gap-48);
+    margin: 30px 0;
+    margin-left: 150px;
+    margin-right: var(--gap-20);
+}
+
+.highlight {
+    color: #990032;
+}
+
+.checkbox_label {
+    color: #666668;
+    font-size: 12px;
+}
+
+.addon {
+    color: #252429;
+    font-size: 14px;
+}
