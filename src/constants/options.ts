@@ -20,3 +20,5 @@ export const PERIOD_OPTIONS = [
     { key: '2_years', content: '2 года' },
     { key: '3_years', content: '3 года' },
 ];
+
+export const sortedSportOptions = SPORT_OPTIONS.sort((a, b) => a.content.localeCompare(b.content));

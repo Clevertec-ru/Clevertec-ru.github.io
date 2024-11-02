@@ -13,7 +13,7 @@ export const FinalBlock = () => (
             <strong>ivanivanov@test.ru</strong>. Убедитесь, что вы получили документы, прежде чем
             закрыть это окно
         </p>
-        <Button view='accent' className={styles.button}>
+        <Button className={styles.activeBtn} view={'accent'}>
             Выслать договор повторно
         </Button>
         <Divider />
