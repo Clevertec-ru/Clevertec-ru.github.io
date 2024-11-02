@@ -1,0 +1,38 @@
+.selectBlock {
+    padding-bottom: 30px;
+}
+
+.selectBlock [class^='select__field'] {
+    height: 56px;
+}
+
+.inputs {
+    max-width: 100%;
+    display: flex;
+    gap: 24px;
+    padding-bottom: 45px;
+}
+
+.inputBlock {
+    height: 56px;
+}
+
+.inputBlock .label {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.focused .label {
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+@media (max-width: 600px) {
+    .inputs {
+        flex-wrap: wrap;
+    }
+
+    .inputBlock {
+        width: 100%;
+    }
+}
