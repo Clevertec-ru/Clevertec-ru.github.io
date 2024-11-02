@@ -1,0 +1,45 @@
+.btn,
+.activeBtn{
+    border-radius: 4px;
+    border: 1px solid #d3d5d9;
+    height: 60px;
+    font-size: 14px;
+    padding: 0 18px;
+}
+
+.activeBtn {
+    border-color: #990032;
+    background-color: #990032;
+
+    &:hover {
+        background-color: transparent;
+        color: #990032;
+    }
+}
+
+.footer {
+    justify-content: center;
+    gap: 30px;
+    border-top: 1px solid  #e7e9ed;
+    padding: 45px 64px 50px;
+}
+
+.content {
+    padding: 28px 64px 40px !important;
+}
+
+.text {
+    line-height: 1.4;
+    text-align: center;
+    color: #252429;
+}
+
+.header {
+
+    & > *:first-child {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}

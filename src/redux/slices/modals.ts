@@ -18,7 +18,7 @@ const initialState: ModalState = {
     [ModalNames.NO_DATA]: false,
     [ModalNames.PAYMENT]: false,
     [ModalNames.PAYMENT_FRAME]: false,
-    [ModalNames.PERMISSIONS]: false,
+    [ModalNames.PERMISSIONS]: true,
 };
 
 const allClosed: ModalState = {
