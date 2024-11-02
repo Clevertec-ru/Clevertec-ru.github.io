@@ -8,5 +8,4 @@ module.exports = {
             },
         ],
     },
-    ignoreFiles: ['src/server/mocks/api/shared-ui/**/*.css'],
 };
