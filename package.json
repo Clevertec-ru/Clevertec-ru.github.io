@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Clevertec-ru.github.io/sport-garant/",
   "scripts": {
     "start": "vite",
     "build": "vite build",
@@ -12,7 +13,9 @@
     "format:check": "arui-presets-lint format:check",
     "lint": "yarn lint-css && yarn lint-scripts && yarn format:check",
     "lint:fix": "yarn lint-css --fix && yarn lint-scripts --fix && yarn format",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@alfalab/core-components": "47.24.1",
@@ -35,6 +38,7 @@
     "@vitejs/plugin-react": "^4.3.3",
     "arui-presets-lint": "8.0.0",
     "eslint-define-config": "^2.1.0",
+    "gh-pages": "^6.2.0",
     "globals": "^15.11.0",
     "typescript": "~5.6.2",
     "vite": "^5.4.10"
