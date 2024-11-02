@@ -1,5 +1,5 @@
 import { NoShape } from '@alfalab/core-components/icon-view/components';
-import closeIcon from '../../assets/Cross.svg';
+import closeIcon from '/Cross.svg';
 
 import styles from './custom-close.module.css';
 

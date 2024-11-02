@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
 import { Button } from '@alfalab/core-components/button';
 
-import closeIcon from '../../../assets/Cross.svg';
+import closeIcon from '/Cross.svg';
 import { Typography } from '@alfalab/core-components/typography';
 import { GenericWrapper } from '@alfalab/core-components/generic-wrapper';
+import { Divider } from '@alfalab/core-components/divider';
+import { InsuranceModalForm } from '~/components/insurance-modal-form';
 
 import styles from './edit-modal.module.css';
-
-import { Divider } from '@alfalab/core-components/divider';
 
 export const EditModal = () => {
     const { EDIT_MODAL } = useSelector(modalsSelector);
@@ -40,7 +40,7 @@ export const EditModal = () => {
                     Внесенные изменения могут повлиять на стоимость полиса
                 </Typography.Text>
                 <Divider />
-                <form>this is form</form>
+                <InsuranceModalForm />
                 <GenericWrapper justifyContent={'between'} grow={true}>
                     <Button onClick={handleConfirm} className={styles.activeBtn} view={'accent'}>
                         Подтвердить изменения
