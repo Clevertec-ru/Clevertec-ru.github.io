@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
 import { Button } from '@alfalab/core-components/button';
 
-import closeIcon from '../../../assets/Cross.svg';
+import closeIcon from '/Cross.svg';
 import { Typography } from '@alfalab/core-components/typography';
 import { GenericWrapper } from '@alfalab/core-components/generic-wrapper';
 import { Divider } from '@alfalab/core-components/divider';
