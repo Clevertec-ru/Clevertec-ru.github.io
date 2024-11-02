@@ -1,9 +1,9 @@
 import React from 'react';
 import { Radio } from '@alfalab/core-components/radio';
 import { offerFormSelector, setInsuranceFor } from '~/redux/slices/offer-form';
+import { useAppDispatch, useAppSelector } from '~/hooks/typed-react-redux-hooks';
 
 import styles from './radio-group.module.css';
-import { useAppDispatch, useAppSelector } from '~/hooks/typed-react-redux-hooks';
 
 export const RadioGroup = () => {
     const dispatch = useAppDispatch();

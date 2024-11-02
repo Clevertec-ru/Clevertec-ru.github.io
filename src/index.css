@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import '~@alfalab/core-components/vars';
+@import '@alfalab/core-components/vars/gaps.css';
+@import '@alfalab/core-components/vars/border-radius.css';
+@import '@alfalab/core-components/vars/shadows-bluetint.css';
+@import '@alfalab/core-components/vars/colors-bluetint.css';
 
 * {
     box-sizing: border-box;
@@ -14,6 +17,7 @@ body {
     color: #252429;
 }
 
+p,
 h1,
 h2,
 h3,

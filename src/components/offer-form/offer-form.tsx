@@ -10,12 +10,13 @@ import { Space } from '@alfalab/core-components/space';
 import { Text } from '@alfalab/core-components/text';
 import { Amount } from '@alfalab/core-components/amount';
 import { Button } from '@alfalab/core-components/button';
-
-import styles from './offer-form.module.css';
 import { RadioGroup } from '../radio-group';
 import { useAppDispatch, useAppSelector } from '~/hooks/typed-react-redux-hooks';
 import { offerFormSelector, setCost, setInsuranceAmount } from '~/redux/slices/offer-form';
-import { calculateInsurance } from '~/utils/calculateInsurance';
+import { calculateInsurance } from '~/utils/calculate-insurance';
+
+import styles from './offer-form.module.css';
+import { openModal } from '~/redux/slices/modal';
 
 const sortedSportOptions = SPORT_OPTIONS.sort((a, b) => a.content.localeCompare(b.content));
 
@@ -25,6 +26,10 @@ export const OfferForm = () => {
     const { sportType, birthDate, startDate, period, insuranceFor, insuranceAmount, cost, errors } =
         offerForm;
     const hasErrors = Object.values(errors).some((error) => error !== '');
+
+    const handleOpenModal = () => {
+        dispatch(openModal());
+    };
 
     useEffect(() => {
         const { amount, cost } = calculateInsurance({
@@ -49,7 +54,7 @@ export const OfferForm = () => {
                     </h5>
                 </div>
             </div>
-            <Space size={0} className={styles.formWrapper}>
+            <Space fullWidth={true} className={styles.formWrapper}>
                 <span className={styles.formText}>
                     Получите предложение,
                     <br /> рассчитанное именно для вас:
@@ -71,24 +76,18 @@ export const OfferForm = () => {
                     <div className={styles.inputs}>
                         <CalendarInputField
                             name={`birthDate`}
-                            label={
-                                <span className={styles.label}>
-                                    Дата <br /> рождения
-                                </span>
-                            }
+                            label={<span className={styles.label}>Дата рождения</span>}
                             minDate={DATE_1920.valueOf()}
                             maxDate={TODAY.valueOf()}
                             fieldClassName={styles.inputBlock}
+                            focusedClassName={styles.focused}
                         />
                         <CalendarInputField
                             name={`startDate`}
-                            label={
-                                <span className={styles.label}>
-                                    Начало <br /> страхования
-                                </span>
-                            }
+                            label={<span className={styles.label}>Начало страхования</span>}
                             minDate={TODAY.valueOf()}
                             fieldClassName={styles.inputBlock}
+                            focusedClassName={styles.focused}
                         />
                         <SelectField
                             name={`period`}
@@ -125,7 +124,12 @@ export const OfferForm = () => {
                             />
                         </Space>
                     </div>
-                    <Button view='accent' className={styles.submitButton} disabled={hasErrors}>
+                    <Button
+                        view='accent'
+                        className={styles.submitButton}
+                        disabled={hasErrors}
+                        onClick={handleOpenModal}
+                    >
                         Оформить онлайн
                     </Button>
                 </form>

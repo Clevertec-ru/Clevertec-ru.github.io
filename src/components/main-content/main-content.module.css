@@ -1,16 +1,17 @@
 .main {
     flex: 1;
     display: flex;
-    padding: var(--gap-0) 160px 186px;
+    padding-bottom: 186px;
+    justify-content: center;
     gap: 94px;
     background: transparent;
+    align-items: end;
 }
 
 .blocksContainer {
     display: grid;
     grid-template-columns: repeat(2, 190px);
     grid-template-rows: repeat(2, 175px);
-    gap: 16px;
 }
 
 .block {
@@ -18,8 +19,14 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 10px;
-    border-radius: var(--border-radius-8);
+    padding: var(--gap-20) var(--gap-24);
+    color: var(--color-light-text-primary-inverted);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.block p {
+    margin-top: auto;
 }
 
 .transparent {
@@ -28,4 +35,18 @@
 
 .background {
     background: #b7003780;
+}
+
+@media (max-width: 1200px) {
+    .main {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .main {
+        padding-bottom: var(--gap-80);
+        gap: 60px;
+    }
 }

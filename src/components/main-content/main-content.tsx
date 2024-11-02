@@ -11,19 +11,19 @@ export const MainContent = () => (
         <OfferForm />
         <div className={styles.blocksContainer}>
             <div className={transparentClassName}>
-                <img src='/path/to/icon1.svg' alt='Icon' />
+                <img src='/arrows.svg' alt='arrowsIcon' />
                 <p>Гибкие условия программы</p>
             </div>
             <div className={backgroundClassName}>
-                <img src='/path/to/icon2.svg' alt='Icon' />
+                <img src='/star.svg' alt='starIcon' />
                 <p>Быстрое оформление онлайн</p>
             </div>
             <div className={backgroundClassName}>
-                <img src='/path/to/icon3.svg' alt='Icon' />
+                <img src='/cup.svg' alt='cupIcon' />
                 <p>Подходит для соревнований и тренировок</p>
             </div>
             <div className={transparentClassName}>
-                <img src='/path/to/icon4.svg' alt='Icon' />
+                <img src='scales.svg' alt='scalesIcon' />
                 <p>Соответствует требованиям законодательства</p>
             </div>
         </div>

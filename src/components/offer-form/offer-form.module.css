@@ -1,5 +1,4 @@
 .formContainer {
-    max-width: 642px;
     width: 642px;
 }
 
@@ -10,7 +9,7 @@
 
 .formHeader {
     width: 100%;
-    height: 99px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
 }
@@ -72,17 +71,23 @@
     display: flex;
     padding: var(--gap-40) var(--gap-0);
     gap: 24px;
-}
-
-.label {
-    white-space: normal;
-    overflow-wrap: break-word;
+    flex-wrap: wrap;
 }
 
 .inputBlock {
     max-width: 170px;
     width: 170px;
     height: 56px;
+}
+
+.inputBlock .label {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.focused .label {
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 .selectBlock [class^='select__field'] {
@@ -119,4 +124,61 @@
     background: #990032;
     text-transform: uppercase;
     font-size: 14px;
+}
+
+@media (max-width: 720px) {
+    .formContainer {
+        width: 460px;
+    }
+
+    .formWrapper {
+        padding: var(--gap-40) var(--gap-40);
+    }
+
+    .formHeader {
+        height: 124px;
+    }
+
+    .formTitle {
+        font-size: var(--gap-32);
+        padding: var(--gap-24) var(--gap-0) var(--gap-24) var(--gap-24);
+    }
+
+    .formSubtitle {
+        left: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    .formContainer {
+        width: 360px;
+    }
+
+    .formTitle {
+        font-size: var(--gap-24);
+    }
+
+    .formHeader {
+        height: 100px;
+    }
+
+    .formSubtitle {
+        left: 40px;
+    }
+
+    .pattern {
+        width: 270px;
+    }
+
+    .select {
+        padding: var(--gap-24) var(--gap-0);
+    }
+
+    .inputs {
+        padding: var(--gap-24) var(--gap-0);
+    }
+
+    .formText {
+        font-size: 20px;
+    }
 }
