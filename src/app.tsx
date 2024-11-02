@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainPage } from './pages/main-page';
 import { Provider } from 'react-redux';
 import { configureAppStore } from './configure-store';
+import { FormPage } from './pages/form-page';
 const store = configureAppStore();
 
 export const App = () => (
@@ -11,7 +12,7 @@ export const App = () => (
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<MainPage />} />
-                <Route path='/form' element={<div> Form</div>} />
+                <Route path='/form' element={<FormPage />} />
                 <Route path='/final' element={<MainPage />} />
                 <Route path='*' element={<div> Not Found</div>} />
             </Routes>
