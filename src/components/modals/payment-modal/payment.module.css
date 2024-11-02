@@ -1,0 +1,50 @@
+.header {
+    padding: 47px 64px 22px;
+
+    & > *:first-child > *:first-child {
+        padding-left: 0;
+        padding-bottom: 0;
+        padding-top: 0;
+        font-size: 20px;
+        line-height: 120%;
+        color: #000;
+        opacity: 0.8;
+    }
+}
+
+.content {
+    padding: 0 64px 50px;
+}
+.modal {
+    padding: 0;
+}
+
+.checkboxContainer {
+    margin-bottom: 40px;
+}
+
+.activeBtn{
+    flex-basis: 192px;
+    border-radius: 4px;
+    border: 1px solid #990032;
+    height: 48px;
+    font-size: 14px;
+    padding: 0 18px;
+    background-color: #990032;
+
+    &:hover {
+        background-color: transparent;
+        color: #990032;
+    }
+}
+
+.amountBlock {
+    font-size: 14px;
+    color: #252429;
+}
+
+.summary {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 8px;
+}

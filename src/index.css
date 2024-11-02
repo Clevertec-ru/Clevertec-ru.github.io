@@ -47,6 +47,7 @@ section {
 .checkbox_label {
     color: #666668;
     font-size: 12px;
+    line-height: 1.33;
 }
 
 .addon {
