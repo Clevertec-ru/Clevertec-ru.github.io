@@ -3,107 +3,31 @@
     flex-direction: column;
     min-height: 100vh;
     max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 16px;
-    background: url('/cover_large\ 2.png') no-repeat center center fixed;
+    margin: var(--gap-0) auto;
+    box-shadow: var(--shadow-m);
+}
+
+.pageBackground {
+    background: url('/cover_large.png') no-repeat center top;
     background-size: cover;
 }
 
 .header {
     height: 124px;
-    padding: 52px 0;
+    padding: 52px var(--gap-0) 52px 160px;
     background: transparent;
     display: flex;
     align-items: center;
-}
-
-.main {
-    flex: 1;
-    display: flex;
-    margin-right: -16px;
-}
-
-.formContainer {
-    flex: 0 0 770px;
-    height: 642px;
-    background: #ffffff;
-    margin-right: 16px;
-}
-
-.blocksContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 190px);
-    grid-template-rows: repeat(2, 175px);
-    gap: 16px;
-}
-
-.block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.transparent {
-    background: transparent;
-}
-
-.background {
-    background: #b7003780;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    height: 129px;
-    padding: 37px 0 29px;
-}
-
-.footerLeft {
-    padding: 0 16px;
-}
-
-.footerRight {
-    padding: 0 16px;
-}
-
-.footerRgsl {
-    background: #9e0918;
-    color: #ffffff;
-}
-
-.footerDetails {
-    color: #6a7078;
-}
-
-.footerPhone {
-    background: #9e0918;
-    color: #ffffff;
-}
-
-.footerCall {
-    color: #6a7078;
 }
 
 @media (max-width: 720px) {
-    .main {
-        flex-direction: column;
+    .header {
+        padding-left: 100px;
     }
+}
 
-    .formContainer {
-        margin: 0 0 16px 0;
-        width: 100%;
-    }
-
-    .blocksContainer {
-        grid-template-columns: 1fr;
-    }
-
-    .block {
-        width: 100%;
+@media (max-width: 500px) {
+    .header {
+        padding-left: 60px;
     }
 }
