@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
-import closeIcon from '../../../assets/Cross.svg';
+import closeIcon from '../../../../public/Cross.svg';
 import { Typography } from '@alfalab/core-components/typography';
 import { Space } from '@alfalab/core-components/space';
 import { Checkbox } from '@alfalab/core-components/checkbox';
@@ -14,10 +14,10 @@ import styles from './payment.module.css';
 import { type ChangeEvent, useState } from 'react';
 import { Radio } from '@alfalab/core-components/radio';
 
-import spb from '../../../assets/sbp.svg';
-import visa from '../../../assets/visa1.svg';
-import mc from '../../../assets/mc.svg';
-import mir from '../../../assets/mir.svg';
+import spb from '../../../../public/sbp.svg';
+import visa from '../../../../public/visa1.svg';
+import mc from '../../../../public/mc.svg';
+import mir from '../../../../public/mir.svg';
 import { setIsVisa } from '~/redux/slices/app-slice.ts';
 
 export const PaymentModal = () => {
