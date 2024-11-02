@@ -1,10 +1,10 @@
 .btn,
 .activeBtn {
-    border-radius: 4px;
+    border-radius: var(--border-radius-4);
     border: 1px solid #d3d5d9;
     height: 60px;
     font-size: 14px;
-    padding: 0 18px;
+    padding: var(--gap-0) 18px;
 }
 
 .activeBtn {
@@ -18,11 +18,11 @@
 }
 
 .header {
-    padding: 45px 64px 22px;
+    padding: 45px var(--gap-64) 22px;
 
     & > *:first-child > *:first-child {
-        padding-left: 0;
-        padding-bottom: 0;
+        padding-left: var(--gap-0);
+        padding-bottom: var(--gap-0);
         font-size: 20px;
         line-height: 120%;
         color: #000;
@@ -35,5 +35,5 @@
 }
 
 .content {
-    padding: 64px;
+    padding: var(--gap-64);
 }

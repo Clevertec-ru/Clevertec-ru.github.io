@@ -30,7 +30,7 @@ export const InsuranceForm = () => {
     }, [sportType, birthDate, startDate, period, insuranceFor, dispatch]);
 
     return (
-        <form>
+        <div>
             <RadioGroup />
             <Divider />
             <div className={styles.select}>
@@ -71,6 +71,6 @@ export const InsuranceForm = () => {
                     fieldClassName={classNames(styles.inputBlock, styles.selectBlock)}
                 />
             </div>
-        </form>
+        </div>
     );
 };

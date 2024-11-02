@@ -20,7 +20,7 @@ export const FormPolicyholderInfo = () => {
             <div style={styleRow}>
                 <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input placeholder='Ф.И.О.' label='Ф.И.О.' block={true}/>
+                        <Input placeholder='Ф.И.О.' label='Ф.И.О.' block={true} />
                     </Grid.Col>
                 </Grid.Row>
             </div>
@@ -37,7 +37,12 @@ export const FormPolicyholderInfo = () => {
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
-                            <Input placeholder='Серия' label='Серия' maxLength={4} {...GENERAL_SETTINGS.INPUT_PROPS}/>
+                            <Input
+                                placeholder='Серия'
+                                label='Серия'
+                                maxLength={4}
+                                {...GENERAL_SETTINGS.INPUT_PROPS}
+                            />
                             <Input
                                 placeholder='Номер'
                                 maxLength={6}
@@ -76,7 +81,7 @@ export const FormPolicyholderInfo = () => {
             <div style={styleRow}>
                 <Grid.Row>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input placeholder='Место рождения' label='Место рождения' block={true}/>
+                        <Input placeholder='Место рождения' label='Место рождения' block={true} />
                     </Grid.Col>
                 </Grid.Row>
             </div>

@@ -9,8 +9,7 @@ import { UniversalDateInput } from '@alfalab/core-components/universal-date-inpu
 import { DOCUMENT_OPTIONS, GENDER_OPTIONS } from '~/constants/options';
 import { GENERAL_SETTINGS } from '~/constants/general-settings';
 
-export const FormInsuredPersonInfo = ({ isChild } : {isChild: boolean}) => {
-
+export const FormInsuredPersonInfo = ({ isChild }: { isChild: boolean }) => {
     const styleRow = {
         marginTop: '30px',
     };
@@ -38,7 +37,12 @@ export const FormInsuredPersonInfo = ({ isChild } : {isChild: boolean}) => {
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
-                            <Input placeholder='Серия' label='Серия' maxLength={4} {...GENERAL_SETTINGS.INPUT_PROPS} />
+                            <Input
+                                placeholder='Серия'
+                                label='Серия'
+                                maxLength={4}
+                                {...GENERAL_SETTINGS.INPUT_PROPS}
+                            />
                             <Input
                                 placeholder='Номер'
                                 maxLength={6}

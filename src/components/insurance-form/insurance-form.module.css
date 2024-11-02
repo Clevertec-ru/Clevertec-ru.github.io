@@ -35,9 +35,6 @@
 
     .inputs {
         padding: var(--gap-24) var(--gap-0);
-    }
-
-    .inputs {
         flex-wrap: wrap;
     }
 

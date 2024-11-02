@@ -1,5 +1,5 @@
 .logo {
-    margin: 28px 0 28px 150px;
+    margin: 28px var(--gap-0) 28px 150px;
     text-transform: uppercase;
     cursor: pointer;
 }

@@ -10,7 +10,7 @@
     max-width: 100%;
     display: flex;
     gap: 24px;
-    padding-bottom: 40px;
+    padding-bottom: var(--gap-40);
 }
 
 .inputBlock {
