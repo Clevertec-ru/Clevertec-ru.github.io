@@ -18,9 +18,14 @@ export default defineConfig({
                 theme_color: '#990032',
                 icons: [
                     {
-                        src: 'favicon.ico',
-                        sizes: 'any',
-                        type: 'image/x-icon',
+                        src: 'android-icon-192x192.png',
+                        sizes: '192x192',
+                        type: 'image/png',
+                    },
+                    {
+                        src: 'apple-icon-144x144.png',
+                        sizes: '144x144',
+                        type: 'image/png',
                     },
                 ],
             },
