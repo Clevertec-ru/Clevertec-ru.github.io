@@ -23,21 +23,32 @@ export default defineConfig({
                         type: 'image/png',
                     },
                     {
-                        src: 'apple-icon-144x144.png',
-                        sizes: '144x144',
+                        src: 'apple-icon-152x152.png',
+                        sizes: '152x152',
+                        type: 'image/png',
+                    },
+                    {
+                        src: 'ms-icon-310x310.png',
+                        sizes: '310x310',
                         type: 'image/png',
                     },
                 ],
                 screenshots: [
                     {
                         src: 'screenshot_360.png',
-                        sizes: '320x320',
+                        sizes: '358x694',
                         type: 'image/png',
                         label: 'Мобильный интерфейс',
                     },
                     {
+                        src: 'screenshot_720.png',
+                        sizes: '718x658',
+                        type: 'image/png',
+                        label: 'Планшетный интерфейс',
+                    },
+                    {
                         src: 'screenshot_1440.png',
-                        sizes: '862x722',
+                        sizes: '1438x729',
                         type: 'image/png',
                         label: 'Десктопный интерфейс',
                     },

@@ -53,6 +53,7 @@ export const InsuranceForm = () => {
                     block={true}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
+                    filledClassName={styles.filled}
                 />
                 <CalendarInputField
                     name={`startDate`}
@@ -61,6 +62,7 @@ export const InsuranceForm = () => {
                     block={true}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
+                    filledClassName={styles.filled}
                 />
                 <SelectField
                     name={`period`}
