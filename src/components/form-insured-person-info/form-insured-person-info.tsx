@@ -116,6 +116,22 @@ export const FormInsuredPersonInfo = ({ isChild, handleChange, handleSelectChang
                     </Grid.Col>
                 </Grid.Row>
             </div>
+            {!isChild && (
+                <div style={styleRow}>
+                    <Grid.Row>
+                        <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
+                            <Input 
+                                placeholder='Место рождения' 
+                                name='insured_place'
+                                label='Место рождения' 
+                                block={true}
+                                onChange={handleChange}
+                                value={formData.insured_place || undefined}
+                            />
+                        </Grid.Col>
+                    </Grid.Row>
+                </div>
+            )}
             <div style={styleRow}>
                 <Grid.Row>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>

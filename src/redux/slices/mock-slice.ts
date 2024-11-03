@@ -29,6 +29,7 @@ export const mockSlice = createSlice({
                 insured_reg: 'г. Москва, ул. Пушкина 2/1',
                 insured_fact: 'г. Москва, ул. Пушкина 2/1',
                 insured_dob: '11.02.2022',
+                insured_place: 'г. Москва',
             });
         },
         setSelf: (state) => {

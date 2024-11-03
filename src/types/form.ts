@@ -9,6 +9,7 @@ export type FormDataType = {
     insured_reg?: string;
     insured_fact?: string;
     insured_dob?: string;
+    insured_place?: string;
     policy_fio?: string;
     policy_doc?: string;
     policy_serial?: string;

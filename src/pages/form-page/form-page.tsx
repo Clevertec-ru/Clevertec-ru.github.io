@@ -179,6 +179,7 @@ export const FormPage = () => {
               'insured_reg',
               'insured_fact',
               'insured_dob',
+              'insured_place',
           ]
         : [
               'email',
@@ -200,6 +201,7 @@ export const FormPage = () => {
               'insured_reg',
               'insured_fact',
               'insured_dob',
+              'insured_place',
           ];
 
     useEffect(() => {
@@ -209,6 +211,14 @@ export const FormPage = () => {
 
         setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
     }, [formData, checked, formErrors, requiredFields]);
+
+    useEffect(() => {
+        if (!Object.keys(initialFormData).length) {
+            setFormData({
+                'insured_dob': parameters.birthDate,
+            })
+        }
+    }, [parameters])
 
     return (
         <React.Fragment>
