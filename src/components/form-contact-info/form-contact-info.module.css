@@ -1,0 +1,7 @@
+.contact_container {
+    color: #5e7ac1;
+    margin: 25px var(--gap-0) 31px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

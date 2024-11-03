@@ -1,5 +1,24 @@
 .formContainer {
     width: 642px;
+    overflow: hidden;
+
+    .btn {
+        width: 100%;
+        text-transform: uppercase;
+    }
+
+    .activeBtn {
+        border-radius: var(--border-radius-4);
+        border: 1px solid #d3d5d9;
+        height: 60px;
+        font-size: 14px;
+        background-color: #990032;
+
+        &:hover {
+            background-color: transparent;
+            color: #990032;
+        }
+    }
 }
 
 .formWrapper {
@@ -8,10 +27,11 @@
 }
 
 .formHeader {
-    width: 100%;
+    width: 642px;
     height: 100px;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .formTitle {
@@ -21,12 +41,14 @@
     color: var(--color-light-text-primary-inverted);
     padding: var(--gap-24) var(--gap-0) var(--gap-24) var(--gap-40);
     text-transform: uppercase;
+    flex: 0 0 50%;
+    white-space: nowrap;
 }
 
 .pattern {
+    flex: 0 0 50%;
     position: relative;
     height: 100%;
-    width: 303px;
     background: #002068;
 }
 
@@ -62,36 +84,9 @@
     font-weight: 700;
 }
 
-.select {
-    padding: var(--gap-40) var(--gap-0);
-}
-
-.inputs {
-    max-width: 100%;
-    display: flex;
-    padding: var(--gap-40) var(--gap-0);
-    gap: 24px;
-    flex-wrap: wrap;
-}
-
-.inputBlock {
-    max-width: 170px;
-    width: 170px;
-    height: 56px;
-}
-
-.inputBlock .label {
-    white-space: normal;
-    overflow-wrap: break-word;
-}
-
-.focused .label {
-    white-space: nowrap;
-    overflow-wrap: normal;
-}
-
-.selectBlock [class^='select__field'] {
-    height: 56px;
+.finalText {
+    font-size: 16px;
+    line-height: 1.2;
 }
 
 .amountBlock {
@@ -119,24 +114,9 @@
     line-height: 1.2;
 }
 
-.submitButton {
-    width: 100%;
-}
-
-.button {
-    background: #990032;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.finalText {
-    font-size: 16px;
-    line-height: 1.2;
-}
-
 @media (max-width: 720px) {
     .formContainer {
-        width: 460px;
+        width: 500px;
     }
 
     .formWrapper {
@@ -144,12 +124,12 @@
     }
 
     .formHeader {
+        width: 500px;
         height: 124px;
     }
 
     .formTitle {
         font-size: var(--gap-32);
-        padding: var(--gap-24) var(--gap-0) var(--gap-24) var(--gap-24);
     }
 
     .formSubtitle {
@@ -164,18 +144,16 @@
 
     .formTitle {
         font-size: var(--gap-24);
+        white-space: normal;
     }
 
     .formHeader {
+        width: 360px;
         height: 100px;
     }
 
     .formSubtitle {
         left: 40px;
-    }
-
-    .pattern {
-        width: 250px;
     }
 
     .select {
@@ -187,6 +165,6 @@
     }
 
     .formText {
-        font-size: 20px;
+        font-size: 18px;
     }
 }

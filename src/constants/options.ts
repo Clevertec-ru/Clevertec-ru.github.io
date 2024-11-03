@@ -20,3 +20,15 @@ export const PERIOD_OPTIONS = [
     { key: '2_years', content: '2 года' },
     { key: '3_years', content: '3 года' },
 ];
+
+export const sortedSportOptions = SPORT_OPTIONS.sort((a, b) => a.content.localeCompare(b.content));
+
+export const GENDER_OPTIONS = [
+    { key: '1', content: 'мужской' },
+    { key: '2', content: 'женский' },
+];
+
+export const DOCUMENT_OPTIONS = [
+    { key: '1', content: 'Паспорт РФ' },
+    { key: '2', content: 'Свидетельство' },
+];

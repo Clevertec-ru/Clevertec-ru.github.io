@@ -1,0 +1,11 @@
+.logo {
+    margin: 28px var(--gap-0) 28px 150px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .logo {
+        margin-left: var(--left-tablet-margin);
+    }
+}

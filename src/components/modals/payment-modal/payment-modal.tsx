@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
-import closeIcon from '../../../assets/Cross.svg';
+// import closeIcon from '../../../assets/Cross.svg';
 import { Typography } from '@alfalab/core-components/typography';
 import { Space } from '@alfalab/core-components/space';
 import { Checkbox } from '@alfalab/core-components/checkbox';
@@ -14,10 +14,10 @@ import styles from './payment.module.css';
 import { type ChangeEvent, useState } from 'react';
 import { Radio } from '@alfalab/core-components/radio';
 
-import spb from '../../../assets/sbp.svg';
-import visa from '../../../assets/visa1.svg';
-import mc from '../../../assets/mc.svg';
-import mir from '../../../assets/mir.svg';
+// import spb from '../../../assets/sbp.svg';
+// import visa from '../../../assets/visa1.svg';
+// import mc from '../../../assets/mc.svg';
+// import mir from '../../../assets/mir.svg';
 import { setIsVisa } from '~/redux/slices/app-slice.ts';
 
 export const PaymentModal = () => {
@@ -62,7 +62,7 @@ export const PaymentModal = () => {
             <Modal.Header
                 className={styles.header}
                 title={'Оплата договора'}
-                closerIcon={<img src={closeIcon} />}
+                closerIcon={<img src={'./Cross.svg'} />}
             />
             <Modal.Content className={styles.content}>
                 <Typography.Text
@@ -132,7 +132,7 @@ export const PaymentModal = () => {
                                         </div>
                                     }
                                 />
-                                <img src={spb} width='80px' height='40px' />
+                                <img src={'./sbp.svg'} width='80px' height='40px' />
                             </GenericWrapper>
                             <GenericWrapper justifyContent={'between'} grow={true}>
                                 <Radio
@@ -144,9 +144,9 @@ export const PaymentModal = () => {
                                     onChange={() => setValue('visa')}
                                 />
                                 <div className={styles.iconContainer}>
-                                    <img src={visa} width='44px' height='13px' />
-                                    <img src={mc} width='32px' height='25px' />
-                                    <img src={mir} width='55px' height='16px' />
+                                    <img src={'./visa.svg'} width='44px' height='13px' />
+                                    <img src={'./mc.svg'} width='32px' height='25px' />
+                                    <img src={'./mir.svg'} width='55px' height='16px' />
                                 </div>
                             </GenericWrapper>
                         </Space>

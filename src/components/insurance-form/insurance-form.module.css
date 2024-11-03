@@ -1,0 +1,44 @@
+.selectBlock [class^='select__field'] {
+    height: 56px;
+}
+
+.select {
+    padding: var(--gap-40) var(--gap-0);
+}
+
+.inputs {
+    max-width: 100%;
+    display: flex;
+    padding: var(--gap-40) var(--gap-0);
+    gap: 24px;
+}
+
+.inputBlock .label {
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+.focused .label {
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+.inputBlock {
+    width: 170px;
+    height: 56px;
+}
+
+@media (max-width: 720px) {
+    .select {
+        padding: var(--gap-24) var(--gap-0);
+    }
+
+    .inputs {
+        padding: var(--gap-24) var(--gap-0);
+        flex-wrap: wrap;
+    }
+
+    .inputBlock {
+        width: 100%;
+    }
+}

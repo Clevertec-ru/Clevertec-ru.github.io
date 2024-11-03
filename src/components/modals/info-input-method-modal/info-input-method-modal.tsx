@@ -3,8 +3,8 @@ import { Button } from '@alfalab/core-components/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
 import { CustomClose } from '~/components/modals/custom-close.tsx';
-import icon from '../../../assets/Cross.svg';
-import gosLogo from '../../../assets/gos_logo.svg';
+import icon from '/Cross.svg';
+import gosLogo from '/gos_logo.svg';
 
 import styles from '../custom-close.module.css';
 import s from './info-input-method-modal.module.css';

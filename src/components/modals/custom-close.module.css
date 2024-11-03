@@ -1,12 +1,12 @@
 .shape {
-    border-radius: 4px;
+    border-radius: var(--border-radius-4);
     background: #f4f4f5;
 }
 
 .closer1111 {
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-4);
     background: #f4f4f5;
 }
 

@@ -29,6 +29,7 @@ h5 {
 :root {
     --checkbox-checked-bg-color: #ba875c;
     --checkbox-checked-hover-bg-color: #ba865c79;
+    --left-tablet-margin: 50px;
 }
 
 section {
@@ -53,4 +54,40 @@ section {
 .addon {
     color: #252429;
     font-size: 14px;
+    word-wrap: break-word;
+}
+
+.submit_button {
+    margin-left: 150px !important;
+}
+
+form {
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+    section {
+        margin-left: var(--left-tablet-margin);
+        padding: var(--gap-20);
+    }
+    .submit_button {
+        margin: var(--gap-0) !important;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .gaps {
+        margin-top: 26px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    section,
+    .submit_button {
+        margin-left: var(--gap-20);
+    }
+
+    section h2 {
+        font-size: 18px;
+    }
 }

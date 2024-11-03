@@ -5,16 +5,16 @@
 }
 
 .header {
-    padding: 45px 64px 28px;
+    padding: 45px var(--gap-64) 28px;
 }
 
 .modalContent {
-    padding: 0 64px 50px;
+    padding: var(--gap-0) var(--gap-64) 50px;
 }
 
 .modalContent > p {
-    padding: 0;
-    margin: 0 0 45px 0;
+    padding: var(--gap-0);
+    margin: var(--gap-0) 0 45px 0;
 }
 
 .baseBtn,
