@@ -31,15 +31,9 @@ export default defineConfig({
                 screenshots: [
                     {
                         src: 'screenshot_360.png',
-                        sizes: '132x747',
+                        sizes: '320x320',
                         type: 'image/png',
                         label: 'Мобильный интерфейс',
-                    },
-                    {
-                        src: 'screenshot_720.png',
-                        sizes: '267',
-                        type: 'image/png',
-                        label: 'Планшетный интерфейс',
                     },
                     {
                         src: 'screenshot_1440.png',

@@ -24,7 +24,6 @@ export default tseslint.config(
         rules: {
             ...reactHooks.configs.recommended.rules,
             'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
-            // Добавляем правила из вашего .eslintrc.js
             'import/no-default-export': 'error',
             'import/no-cycle': 'off',
             'no-restricted-syntax': 'off',
@@ -36,7 +35,7 @@ export default tseslint.config(
             ],
             'no-param-reassign': 'off',
             'no-return-assign': 'off',
-            indent: 'off', // Если нужно
+            indent: 'off',
         },
         overrides: [
             {
