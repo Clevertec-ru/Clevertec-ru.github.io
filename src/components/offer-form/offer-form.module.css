@@ -142,6 +142,11 @@
         width: 360px;
     }
 
+    .formWrapper {
+        background: var(--color-light-bg-primary);
+        padding: var(--gap-24) var(--gap-20);
+    }
+
     .formTitle {
         font-size: var(--gap-24);
         white-space: normal;

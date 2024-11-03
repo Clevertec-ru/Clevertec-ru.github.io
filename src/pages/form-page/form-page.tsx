@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 
 import { Checkbox } from '@alfalab/core-components/checkbox';
 import { CustomButton } from '@alfalab/core-components/custom-button';
@@ -16,15 +16,21 @@ import { offerFormSelector } from '~/redux/slices/offer-form';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './form-page.module.css';
+import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
+
+const DEBOUNCE_DELAY = 300;
 
 export const FormPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [checked, setChecked] = useState({
-        agree: true,
-        delegate: true,
+        agree: false,
+        delegate: false,
     });
+
+    const [formData, setFormData] = useState<{ [key: string]: string }>({});
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const parameters = useAppSelector(offerFormSelector);
 
@@ -47,7 +53,57 @@ export const FormPage = () => {
 
     const logoClickHandler = () => {
         navigate('/');
+    }
+
+    const debounceTimer = useRef<NodeJS.Timeout | null>(null);
+
+    const updateFormData = useCallback((fieldName: string, value: string) => {
+        setFormData((prevData) => ({
+            ...prevData,
+            [fieldName]: value,
+        }));
+    }, []);
+
+    const debouncedUpdateFormData = useCallback((fieldName: string, value: string) => {
+        if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+        }
+        debounceTimer.current = setTimeout(() => {
+            updateFormData(fieldName, value);
+        }, DEBOUNCE_DELAY);
+    }, [updateFormData]);
+
+
+    const handleChangeFormInput = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
+        debouncedUpdateFormData(name, value);
     };
+
+    const handleSelectChange = (payload: BaseSelectChangePayload) => {
+        const { name, selected } = payload;
+        debouncedUpdateFormData(name as string, selected ? selected.value : '');
+    };
+
+    const handleDateChange = (fieldName: string) => (date: Date | null, value: string) => {
+        debouncedUpdateFormData(fieldName, value);
+    };
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
+
+    const requiredFields = !isChild
+        ? ['email', 'phone', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob']
+        : ['email', 'phone', 'policy_fio', 'policy_doc', 'policy_serial', 'policy_number', 'policy_gender', 'policy_place', 'policy_reg', 'policy_fact', 'policy_dob', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob'];
+
+    useEffect(() => {
+        const allFieldsFilled = requiredFields.every((field) => formData[field]);
+        const allChecked = checked.agree && checked.delegate;
+
+        setIsButtonDisabled(!(allFieldsFilled && allChecked));
+    }, [formData, checked, requiredFields]);
+
+    console.log(formData)
 
     return (
         <React.Fragment>
@@ -57,10 +113,21 @@ export const FormPage = () => {
                 </h2>
                 <form name='form'>
                     <FormHeader />
-                    <FormProgramParameters parameters={parameters} />
-                    <FormContactInfo />
-                    {isChild && <FormPolicyholderInfo />}
-                    <FormInsuredPersonInfo isChild={isChild} />
+                    <FormProgramParameters parameters={parameters}/>
+                    <FormContactInfo handleChange={handleChangeFormInput}/>
+                    {isChild &&  (
+                        <FormPolicyholderInfo 
+                            handleChange={handleChangeFormInput} 
+                            handleSelectChange={handleSelectChange} 
+                            handleDateChange={handleDateChange}
+                        />
+                    )}
+                    <FormInsuredPersonInfo 
+                        isChild={isChild} 
+                        handleChange={handleChangeFormInput} 
+                        handleSelectChange={handleSelectChange} 
+                        handleDateChange={handleDateChange}
+                    />
                     <section style={{ border: 'none', padding: 0 }}>
                         <Checkbox
                             block={true}
@@ -68,10 +135,10 @@ export const FormPage = () => {
                             onChange={handleChange('agree')}
                             checked={checked.agree}
                             label={
-                                <div className='checkbox_label'>
+                                <div className={styles.checkbox_label}>
                                     Я согласен на{' '}
-                                    <span className='highlight'>обработку персональных данных</span>{' '}
-                                    и ознакомился с{' '}
+                                    <span className='highlight'>обработку персональных данных</span> и
+                                    ознакомился с{' '}
                                     <span className='highlight'>
                                         Политикой в отношении обработки персональных данных
                                     </span>
@@ -84,9 +151,9 @@ export const FormPage = () => {
                             onChange={handleChange('delegate')}
                             checked={checked.delegate}
                             label={
-                                <div className='checkbox_label'>
-                                    Я подтверждаю, что являюсь законным представителем ребенка
-                                    (нужен текст)
+                                <div className={styles.checkbox_label}>
+                                    Я подтверждаю, что являюсь законным представителем ребенка (нужен
+                                    текст)
                                 </div>
                             }
                         />
@@ -96,6 +163,7 @@ export const FormPage = () => {
                         size='s'
                         onClick={handleClick}
                         backgroundColor='#990032'
+                        disabled={isButtonDisabled}
                     >
                         Оплатить полис
                     </CustomButton>

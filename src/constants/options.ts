@@ -24,11 +24,11 @@ export const PERIOD_OPTIONS = [
 export const sortedSportOptions = SPORT_OPTIONS.sort((a, b) => a.content.localeCompare(b.content));
 
 export const GENDER_OPTIONS = [
-    { key: '1', content: 'мужской' },
-    { key: '2', content: 'женский' },
+    { key: '1', content: 'мужской', value: 'male' },
+    { key: '2', content: 'женский', value: 'female' },
 ];
 
 export const DOCUMENT_OPTIONS = [
-    { key: '1', content: 'Паспорт РФ' },
-    { key: '2', content: 'Свидетельство' },
+    { key: '1', content: 'Паспорт РФ', value: 'passport' },
+    { key: '2', content: 'Свидетельство', value: 'svidetelstvo' },
 ];
