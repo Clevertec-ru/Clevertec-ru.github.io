@@ -12,6 +12,16 @@
     padding: var(--gap-0) var(--gap-64) 50px;
 }
 
+@media (max-width: 700px) {
+    .header {
+        padding: 22px 15px 22px;
+    }
+
+    .modalContent {
+        padding: var(--gap-0) 22px 0;
+    }
+}
+
 .modalContent > p {
     padding: var(--gap-0);
     margin: var(--gap-0) 0 45px 0;

@@ -15,6 +15,18 @@
 .content {
     padding: 0 64px 50px;
 }
+
+
+@media (max-width: 700px) {
+    .content {
+        padding: 0 15px 0;
+    }
+
+    .header {
+        padding: 22px 15px 22px;
+    }
+}
+
 .modal {
     padding: 0;
 }

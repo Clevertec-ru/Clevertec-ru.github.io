@@ -29,7 +29,7 @@ export const EditModal = () => {
     };
 
     return (
-        <Modal open={EDIT_MODAL}>
+        <Modal open={EDIT_MODAL} onClose={handleCancel}>
             <Modal.Header
                 title={'Редактирование параметров программы'}
                 closerIcon={<img src={closeIcon} alt={'close-modal-icon'} />}
