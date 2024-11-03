@@ -4,6 +4,12 @@
     cursor: pointer;
 }
 
+.checkbox_label {
+    align-self: center;
+    font-size: 12px;
+    color: #666668;
+}
+
 @media screen and (max-width: 1024px) {
     .logo {
         margin-left: var(--left-tablet-margin);
