@@ -46,7 +46,6 @@ export const InfoInputMethodModal = () => {
         <Modal open={INPUT_METHOD} onClose={onCancel}>
             <Modal.Header
                 hasCloser={true}
-                // closerIcon={<CustomClose />}
                 closerIcon={<img src={icon} />}
                 closerClassName={styles.closer}
                 contentClassName={s.content}

@@ -56,6 +56,12 @@ export const offerFormSlice = createSlice({
             state.cost = 0;
             state.errors = {};
         },
+        setOfferForm: (state, { payload }: PayloadAction<OfferFormState>) => {
+            Object.assign(state, payload);
+        },
+    },
+    selectors: {
+        insuranceAmountSelector: (state) => state.insuranceAmount,
     },
 });
 
@@ -70,8 +76,9 @@ export const {
     setCost,
     setOfferFormErrors,
     resetOfferForm,
+    setOfferForm,
 } = offerFormSlice.actions;
 
 export const offerFormSelector = (state: ApplicationState) => state.offerForm;
-
+export const { insuranceAmountSelector } = offerFormSlice.selectors;
 export default offerFormSlice.reducer;
