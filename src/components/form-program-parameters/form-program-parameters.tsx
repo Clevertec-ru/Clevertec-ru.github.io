@@ -5,12 +5,14 @@ import { Divider } from '@alfalab/core-components/divider';
 import { Gap } from '@alfalab/core-components/gap';
 import { Grid } from '@alfalab/core-components/grid';
 import { Amount } from '@alfalab/core-components/amount';
-
-import styles from './form-program-parameters.module.css';
 import { useDispatch } from 'react-redux';
 import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 import { OfferFormState } from '~/types/offer-form-types';
 import { GENERAL_SETTINGS } from '~/constants/general-settings';
+import { PERIOD_OPTIONS, SPORT_OPTIONS } from '~/constants/options';
+import { getInRussian } from '~/utils/getInRussian';
+
+import styles from './form-program-parameters.module.css';
 
 export const FormProgramParameters = ({ parameters }: { parameters: OfferFormState }) => {
     const dispatch = useDispatch();
@@ -29,7 +31,11 @@ export const FormProgramParameters = ({ parameters }: { parameters: OfferFormSta
             <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                 <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                     <Button
-                        rightAddons={<div className='addon'>{parameters.sportType}</div>}
+                        rightAddons={
+                            <div className='addon'>
+                                {getInRussian(SPORT_OPTIONS, parameters.sportType)}
+                            </div>
+                        }
                         className={styles.parameters}
                         {...GENERAL_SETTINGS.FORM_PARAMETERS_PROPS}
                     >
@@ -108,7 +114,12 @@ export const FormProgramParameters = ({ parameters }: { parameters: OfferFormSta
             <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                 <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                     <Button
-                        rightAddons={<div className='addon'>{parameters.period}</div>}
+                        rightAddons={
+                            <div className='addon'>
+                                {' '}
+                                {getInRussian(PERIOD_OPTIONS, parameters.period)}
+                            </div>
+                        }
                         className={styles.parameters}
                         {...GENERAL_SETTINGS.FORM_PARAMETERS_PROPS}
                     >
