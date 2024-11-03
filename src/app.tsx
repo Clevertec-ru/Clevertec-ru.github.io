@@ -8,6 +8,7 @@ import { FormPage } from './pages/form-page/form-page';
 import { Modals } from '~/components/modals';
 import { Roots } from '~/types/roots.ts';
 import { ErrorBoundary } from '~/components/error-boundary';
+
 const store = configureAppStore();
 
 export const App = () => (
