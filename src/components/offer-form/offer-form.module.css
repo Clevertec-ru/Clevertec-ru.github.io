@@ -144,7 +144,7 @@
 
     .formWrapper {
         background: var(--color-light-bg-primary);
-        padding: var(--gap-40) var(--gap-24);
+        padding: var(--gap-24) var(--gap-20);
     }
 
     .formTitle {
