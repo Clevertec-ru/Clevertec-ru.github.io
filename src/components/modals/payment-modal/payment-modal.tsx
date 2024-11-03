@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
-// import closeIcon from '../../../assets/Cross.svg';
 import { Typography } from '@alfalab/core-components/typography';
 import { Space } from '@alfalab/core-components/space';
 import { Checkbox } from '@alfalab/core-components/checkbox';
@@ -14,13 +13,12 @@ import styles from './payment.module.css';
 import { type ChangeEvent, useState } from 'react';
 import { Radio } from '@alfalab/core-components/radio';
 
-// import spb from '../../../assets/sbp.svg';
-// import visa from '../../../assets/visa1.svg';
-// import mc from '../../../assets/mc.svg';
-// import mir from '../../../assets/mir.svg';
 import { setIsVisa } from '~/redux/slices/app-slice.ts';
+import { insuranceAmountSelector } from '~/redux/slices/offer-form.ts';
 
 export const PaymentModal = () => {
+    const amountValue = useSelector(insuranceAmountSelector);
+
     const [value, setValue] = useState('notVisa');
 
     const { PAYMENT } = useSelector(modalsSelector);
@@ -159,14 +157,19 @@ export const PaymentModal = () => {
                             Cумма платежа:
                         </Typography.Text>
                         <Amount
-                            value={250000}
+                            value={amountValue}
                             minority={100}
                             currency={'RUB'}
                             view={'withZeroMinorPart'}
                             bold={'none'}
                         />
                     </div>
-                    <Button onClick={handleBtnClick} view={'accent'} className={styles.activeBtn}>
+                    <Button
+                        onClick={handleBtnClick}
+                        view={'accent'}
+                        className={styles.activeBtn}
+                        disabled={Object.values(checked).some((el) => !el)}
+                    >
                         Оплатить
                     </Button>
                 </GenericWrapper>

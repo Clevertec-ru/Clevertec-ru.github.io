@@ -10,22 +10,46 @@ import { Divider } from '@alfalab/core-components/divider';
 import { InsuranceModalForm } from '~/components/insurance-modal-form';
 
 import styles from './edit-modal.module.css';
+import { offerFormSelector, setOfferForm } from '~/redux/slices/offer-form.ts';
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Roots } from '~/types/roots.ts';
+import { OfferFormState } from '~/types/offer-form-types.ts';
 
 export const EditModal = () => {
     const { EDIT_MODAL } = useSelector(modalsSelector);
+    //! лютый хардкод, тут мы кэшируем первоначальный стейт
+    const prevState = useSelector(offerFormSelector);
+    const { pathname } = useLocation();
+
+    const prevValue = useRef<null | OfferFormState>(null);
+
+    useEffect(() => {
+        if (pathname === Roots.FORM && !!EDIT_MODAL) {
+            prevValue.current = prevState;
+        }
+    }, [pathname, EDIT_MODAL]);
+
     const dispatch = useDispatch();
 
-    const handleCancel = () =>
+    const handleCancel = () => {
+        dispatch(setOfferForm(prevValue.current as OfferFormState));
         dispatch(
             setModalOpen({
                 modal: ModalNames.EDIT_MODAL,
                 isOpen: false,
             }),
         );
+    };
 
     const handleConfirm = () => {
-        //     TODO: update form state
-        handleCancel();
+        dispatch(setOfferForm(prevState as OfferFormState));
+        dispatch(
+            setModalOpen({
+                modal: ModalNames.EDIT_MODAL,
+                isOpen: false,
+            }),
+        );
     };
 
     return (
