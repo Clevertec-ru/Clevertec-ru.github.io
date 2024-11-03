@@ -18,13 +18,22 @@ interface FormPolicyholderInfoProps {
     formData: FormDataType;
 }
 
-export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleDateChange, formData }: FormPolicyholderInfoProps) => {
+export const FormPolicyholderInfo = ({
+    handleChange,
+    handleSelectChange,
+    handleDateChange,
+    formData,
+}: FormPolicyholderInfoProps) => {
     const styleRow = {
         marginTop: '30px',
     };
 
-    const selectedGenderIndex = GENDER_OPTIONS.find((gender) => gender.value === formData.insured_gender)?.key;
-    const selectedDocumentIndex = DOCUMENT_OPTIONS.find((gender) => gender.value === formData.insured_doc)?.key;
+    const selectedGenderIndex = GENDER_OPTIONS.find(
+        (gender) => gender.value === formData.insured_gender,
+    )?.key;
+    const selectedDocumentIndex = DOCUMENT_OPTIONS.find(
+        (gender) => gender.value === formData.insured_doc,
+    )?.key;
 
     return (
         <section>
@@ -32,11 +41,11 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
             <div style={styleRow}>
                 <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input 
-                            placeholder='Ф.И.О.' 
-                            label='Ф.И.О.' 
-                            block={true} 
-                            name='policy_fio' 
+                        <Input
+                            placeholder='Ф.И.О.'
+                            label='Ф.И.О.'
+                            block={true}
+                            name='policy_fio'
                             onChange={handleChange}
                             value={formData.policy_fio || undefined}
                         />
@@ -59,14 +68,14 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
-                            <Input 
-                                placeholder='Серия' 
-                                name='policy_serial' 
-                                label='Серия' 
-                                maxLength={4} 
+                            <Input
+                                placeholder='Серия'
+                                name='policy_serial'
+                                label='Серия'
+                                maxLength={4}
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
-                                value={formData.policy_fio || undefined}
+                                value={formData.policy_serial || undefined}
                             />
                             <Input
                                 placeholder='Номер'
@@ -76,7 +85,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                                 label='Номер'
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
-                                value={formData.policy_fio || undefined}
+                                value={formData.policy_number || undefined}
                             />
                         </Space>
                     </Grid.Col>
@@ -115,10 +124,10 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
             <div style={styleRow}>
                 <Grid.Row>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input 
-                            placeholder='Место рождения' 
-                            name='policy_place' 
-                            label='Место рождения' 
+                        <Input
+                            placeholder='Место рождения'
+                            name='policy_place'
+                            label='Место рождения'
                             block={true}
                             onChange={handleChange}
                             value={formData.policy_place || undefined}
