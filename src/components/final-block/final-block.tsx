@@ -9,7 +9,7 @@ export const FinalBlock = () => (
     <Space fullWidth={true} size={32} className={styles.formWrapper}>
         <h3 className={styles.formText}>Поздравляем, оплата прошла успешно!</h3>
         <p className={styles.finalText}>
-            Ваш договор страхования и пакет документации отправлены по адресу
+            Ваш договор страхования и пакет документации отправлены по адресу{' '}
             <strong>ivanivanov@test.ru</strong>. Убедитесь, что вы получили документы, прежде чем
             закрыть это окно
         </p>

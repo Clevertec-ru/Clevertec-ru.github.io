@@ -23,6 +23,8 @@ type CalendarInputFieldProps = Omit<
     onChange?: (value: string) => void;
 };
 
+// const isMobileCalendarView = window.matchMedia(`(max-width: 720px)`).matches;
+
 export const CalendarInputField: React.FC<CalendarInputFieldProps> = ({
     name,
     onChange,
@@ -55,6 +57,7 @@ export const CalendarInputField: React.FC<CalendarInputFieldProps> = ({
             value={fieldValue ? parse(fieldValue, SHORT_DATE, new Date()) : null}
             // error={fieldError}
             name={name}
+            // disableUserInput={isMobileCalendarView}
         />
     );
 };
