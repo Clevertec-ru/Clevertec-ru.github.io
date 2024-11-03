@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Space } from '@alfalab/core-components/space';
 import { MainLogo } from '../../components/main-logo';
 import { MainContent } from '~/components/main-content';
 import { Footer } from '../../components/footer';
