@@ -37,3 +37,18 @@
 .content {
     padding: var(--gap-64);
 }
+
+@media (max-width: 700px) {
+    .content {
+
+        padding: 0 15px 0;
+
+        & > form {
+            margin-bottom: 0;
+        }
+    }
+
+    .header {
+        padding: 22px 15px 22px;
+    }
+}

@@ -2,19 +2,31 @@ import { Modal } from '@alfalab/core-components/modal';
 import { Button } from '@alfalab/core-components/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, modalsSelector, setModalOpen } from '~/redux/slices/modals.ts';
-import { CustomClose } from '~/components/modals/custom-close.tsx';
 import icon from '/Cross.svg';
 import gosLogo from '/gos_logo.svg';
 
 import styles from '../custom-close.module.css';
 import s from './info-input-method-modal.module.css';
 import { Space } from '@alfalab/core-components/space';
+import { useNavigate } from 'react-router-dom';
+import { Roots } from '~/types/roots.ts';
 
 export const InfoInputMethodModal = () => {
     const { INPUT_METHOD } = useSelector(modalsSelector);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const handleClick = () =>
+    const handleClick = () => {
+        navigate(Roots.FORM);
+        dispatch(
+            setModalOpen({
+                modal: ModalNames.GOSUSLUG,
+                isOpen: false,
+            }),
+        );
+    };
+
+    const handleGosClick = () =>
         dispatch(
             setModalOpen({
                 modal: ModalNames.GOSUSLUG,
@@ -45,7 +57,7 @@ export const InfoInputMethodModal = () => {
             <Modal.Content className={s.modalContent}>
                 <p>
                     Вы можете указать информацию, необходимую для покупки полиса, самостоятельно или
-                    использовать эккаунт на госуслугах для автоматического заполнения полей
+                    использовать аккаунт на госуслугах для автоматического заполнения полей
                 </p>
                 <Space direction='vertical' size={25} fullWidth={true}>
                     <Button
@@ -57,7 +69,7 @@ export const InfoInputMethodModal = () => {
                         Заполнить самостоятельно
                     </Button>
                     <Button
-                        onClick={handleClick}
+                        onClick={handleGosClick}
                         block={true}
                         className={s.blueBtn}
                         view={'outlined'}
