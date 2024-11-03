@@ -1,6 +1,6 @@
 .parameters {
     justify-content: space-between;
-    padding: 0;
+    padding: var(--gap-0);
 }
 
 .secondary_btn {
