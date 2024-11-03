@@ -28,6 +28,8 @@
     padding: 28px var(--gap-64) var(--gap-40) !important;
 }
 
+
+
 .text {
     line-height: 1.4;
     text-align: center;
@@ -40,5 +42,22 @@
         margin: var(--gap-0) auto;
         font-size: 20px;
         line-height: 1.2;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .content {
+        padding: 22px 15px var(--gap-40) !important;
+    }
+    .footer {
+        padding: 22px 15px 0px;
+    }
+
+
+    .header {
+        & > *:first-child {
+            width: 90%;
+        }
     }
 }
