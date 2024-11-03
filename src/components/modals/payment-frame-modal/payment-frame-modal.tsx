@@ -7,8 +7,10 @@ import { Roots } from '~/types/roots.ts';
 import { Typography } from '@alfalab/core-components/typography';
 import s from '~/components/modals/confirm-modals.module.css';
 import { GenericWrapper } from '@alfalab/core-components/generic-wrapper';
+import { visaSelector } from '~/redux/slices/app-slice.ts';
 
 export const PaymentFrameModal = () => {
+    const { isVisa } = useSelector(visaSelector);
     const { PAYMENT_FRAME } = useSelector(modalsSelector);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -31,13 +33,11 @@ export const PaymentFrameModal = () => {
             }),
         );
 
-    const isEquiring = false;
-
     return (
         <Modal open={PAYMENT_FRAME}>
             <Modal.Content className={s.content}>
                 <Typography.Text className={s.contentText} tag={'div'} weight={'bold'}>
-                    Системное окно на стороне {isEquiring ? 'эквайринга' : 'СБП'}
+                    Системное окно на стороне {isVisa ? 'эквайринга' : 'СБП'}
                 </Typography.Text>
                 <Typography.Text className={s.contentText} tag={'div'}>
                     Оплата прошла успешно?
