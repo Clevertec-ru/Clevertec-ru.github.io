@@ -9,17 +9,18 @@ import { UniversalDateInput } from '@alfalab/core-components/universal-date-inpu
 import { DOCUMENT_OPTIONS, GENDER_OPTIONS } from '~/constants/options';
 import { GENERAL_SETTINGS } from '~/constants/general-settings';
 import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
-import { FormDataType } from '~/types/form';
+import { FormDataType, FormErrorsType } from '~/types/form';
 
 interface FormPolicyholderInfoProps {
     isChild: boolean;
     handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
     handleSelectChange: (payload: BaseSelectChangePayload) => void;
     handleDateChange: (fieldName: string) => (date: Date | null, value: string) => void;
+    formErrors: FormErrorsType;
     formData: FormDataType;
 }
 
-export const FormInsuredPersonInfo = ({ isChild, handleChange, handleSelectChange, handleDateChange, formData }: FormPolicyholderInfoProps) => {
+export const FormInsuredPersonInfo = ({ isChild, handleChange, handleSelectChange, handleDateChange, formErrors, formData }: FormPolicyholderInfoProps) => {
     const styleRow = {
         marginTop: '30px',
     };
@@ -68,16 +69,18 @@ export const FormInsuredPersonInfo = ({ isChild, handleChange, handleSelectChang
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
                                 value={formData.insured_serial || undefined}
+                                error={formErrors.insured_serial}
                             />
                             <Input
                                 placeholder='Номер'
                                 name='insured_number'
-                                max={6}
+                                maxLength={6}
                                 label='Номер'
                                 type='number'
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
                                 value={formData.insured_number || undefined}
+                                error={formErrors.insured_number}
                             />
                         </Space>
                     </Grid.Col>

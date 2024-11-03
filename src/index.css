@@ -91,3 +91,10 @@ form {
         font-size: 18px;
     }
 }
+
+@media screen and (max-width: 412px) {
+    section {
+        margin-left: 12px;
+        padding: 10px;
+    }
+}

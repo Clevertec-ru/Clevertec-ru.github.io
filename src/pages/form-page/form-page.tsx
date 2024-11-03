@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { Checkbox } from '@alfalab/core-components/checkbox';
 import { CustomButton } from '@alfalab/core-components/custom-button';
 import { Footer } from '../../components/footer';
@@ -26,20 +26,25 @@ export const FormPage = () => {
         agree: false,
         delegate: false,
     });
-    const [formData, setFormData] = useState<{ [key: string]: string }>({email: 'test@mail.ru', insured_doc: 'svidetelstvo', insured_gender: 'male', insured_dob: '11.02.2022'});
+    const [formData, setFormData] = useState<{ [key: string]: string }>({});
     const [formErrors, setFormErrors] = useState<{ [key: string]: string | null }>({
         email: null,
         phone: null,
+        insured_serial: null,
+        insured_number: null,
+        policy_serial: null,
+        policy_number: null
     });
+
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const parameters = useAppSelector(offerFormSelector);
     const isChild = parameters.insuranceFor === 'child';
 
     const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    const validatePhone = (value: string) => {
-        return /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
-    };
+    const validatePhone = (value: string) => /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
+    const validatePassportSerial = (value: string) => /^\d{4}$/.test(value);
+    const validatePassportNumber = (value: string) => /^\d{6}$/.test(value);
 
     const handleClick = () =>
         dispatch(
@@ -86,10 +91,16 @@ export const FormPage = () => {
         debounceTimer.current = setTimeout(() => {
             setFormErrors((prevErrors) => ({
                 ...prevErrors,
-                [name]: 
-                    name === 'email' 
-                        ? validateEmail(value) ? null : 'Некорректный email' 
-                        : validatePhone(value) ? null : 'Некорректный номер телефона'
+                [name]:
+                    name === 'email'
+                        ? validateEmail(value) ? null : 'Некорректный email'
+                        : name === 'phone'
+                        ? validatePhone(value) ? null : 'Некорректный номер телефона'
+                        : name.endsWith('_serial')
+                        ? validatePassportSerial(value) ? null : 'Некорректная серия паспорта'
+                        : name.endsWith('_number')
+                        ? validatePassportNumber(value) ? null : 'Некорректный номер паспорта'
+                        : null,
             }));
         }, DEBOUNCE_DELAY);
     }, []);
@@ -97,7 +108,7 @@ export const FormPage = () => {
     const handleChangeFormInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
 
-        if (name === 'email' || name === 'phone') {
+        if (['email', 'phone', 'insured_serial', 'insured_number', 'policy_serial', 'policy_number'].includes(name)) {
             handleDebouncedValidation(name, value);
         }
 
@@ -118,6 +129,17 @@ export const FormPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        if (isChild) {
+            setFormData((prevData) => ({
+                ...prevData,
+                insured_dob: parameters.birthDate,
+            }))
+        } else {
+            setFormData((prevData) => ({
+                ...prevData,
+                policy_dob: parameters.birthDate,
+            }))
+        }
     }, []);
 
     const requiredFields = !isChild
@@ -132,7 +154,6 @@ export const FormPage = () => {
         setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
     }, [formData, checked, formErrors, requiredFields]);
 
-
     return (
         <React.Fragment>
             <div>
@@ -141,7 +162,7 @@ export const FormPage = () => {
                 </h2>
                 <form name='form'>
                     <FormHeader />
-                    <FormProgramParameters parameters={parameters}/>
+                    <FormProgramParameters parameters={parameters} />
                     <FormContactInfo 
                         handleChange={handleChangeFormInput} 
                         errors={formErrors}
@@ -152,6 +173,7 @@ export const FormPage = () => {
                             handleChange={handleChangeFormInput} 
                             handleSelectChange={handleSelectChange} 
                             handleDateChange={handleDateChange}
+                            formErrors={formErrors}
                             formData={formData}
                         />
                     )}
@@ -160,6 +182,7 @@ export const FormPage = () => {
                         handleChange={handleChangeFormInput} 
                         handleSelectChange={handleSelectChange} 
                         handleDateChange={handleDateChange}
+                        formErrors={formErrors}
                         formData={formData}
                     />
                     <section style={{ border: 'none', padding: 0 }}>
