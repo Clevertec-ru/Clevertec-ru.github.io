@@ -28,6 +28,26 @@ export default defineConfig({
                         type: 'image/png',
                     },
                 ],
+                screenshots: [
+                    {
+                        src: 'screenshot_360.png',
+                        sizes: '360x1200',
+                        type: 'image/png',
+                        label: 'Мобильный интерфейс',
+                    },
+                    {
+                        src: 'screenshot_720.png',
+                        sizes: '720x747',
+                        type: 'image/png',
+                        label: 'Планшетный интерфейс',
+                    },
+                    {
+                        src: 'screenshot_1440.png',
+                        sizes: '1440x1210',
+                        type: 'image/png',
+                        label: 'Десктопный интерфейс',
+                    },
+                ],
             },
         }),
     ],
