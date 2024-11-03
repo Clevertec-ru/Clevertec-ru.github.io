@@ -7,7 +7,7 @@ import { FormHeader } from '../../components/form-header/form-header';
 import { FormInsuredPersonInfo } from '../../components/form-insured-person-info/form-insured-person-info';
 import { FormPolicyholderInfo } from '../../components/form-policyholder-info/form-policyholder-info';
 import { FormProgramParameters } from '../../components/form-program-parameters/form-program-parameters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 import { useAppSelector } from '~/hooks/typed-react-redux-hooks';
 import { offerFormSelector } from '~/redux/slices/offer-form';
@@ -15,10 +15,12 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './form-page.module.css';
 import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
+import { bigFormSelector } from '~/redux/slices/mock-slice.ts';
 
 const DEBOUNCE_DELAY = 300;
 
 export const FormPage = () => {
+    const initialFormData = useSelector(bigFormSelector);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ export const FormPage = () => {
         agree: false,
         delegate: false,
     });
-    const [formData, setFormData] = useState<{ [key: string]: string }>({email: 'test@mail.ru', insured_doc: 'svidetelstvo', insured_gender: 'male', insured_dob: '11.02.2022'});
+    const [formData, setFormData] = useState<{ [key: string]: string }>(initialFormData);
     const [formErrors, setFormErrors] = useState<{ [key: string]: string | null }>({
         email: null,
         phone: null,
@@ -69,14 +71,17 @@ export const FormPage = () => {
         }));
     }, []);
 
-    const debouncedUpdateFormData = useCallback((fieldName: string, value: string) => {
-        if (debounceTimer.current) {
-            clearTimeout(debounceTimer.current);
-        }
-        debounceTimer.current = setTimeout(() => {
-            updateFormData(fieldName, value);
-        }, DEBOUNCE_DELAY);
-    }, [updateFormData]);
+    const debouncedUpdateFormData = useCallback(
+        (fieldName: string, value: string) => {
+            if (debounceTimer.current) {
+                clearTimeout(debounceTimer.current);
+            }
+            debounceTimer.current = setTimeout(() => {
+                updateFormData(fieldName, value);
+            }, DEBOUNCE_DELAY);
+        },
+        [updateFormData],
+    );
 
     const handleDebouncedValidation = useCallback((name: string, value: string) => {
         if (debounceTimer.current) {
@@ -86,10 +91,14 @@ export const FormPage = () => {
         debounceTimer.current = setTimeout(() => {
             setFormErrors((prevErrors) => ({
                 ...prevErrors,
-                [name]: 
-                    name === 'email' 
-                        ? validateEmail(value) ? null : 'Некорректный email' 
-                        : validatePhone(value) ? null : 'Некорректный номер телефона'
+                [name]:
+                    name === 'email'
+                        ? validateEmail(value)
+                            ? null
+                            : 'Некорректный email'
+                        : validatePhone(value)
+                          ? null
+                          : 'Некорректный номер телефона',
             }));
         }, DEBOUNCE_DELAY);
     }, []);
@@ -121,8 +130,39 @@ export const FormPage = () => {
     }, []);
 
     const requiredFields = !isChild
-        ? ['email', 'phone', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob']
-        : ['email', 'phone', 'policy_fio', 'policy_doc', 'policy_serial', 'policy_number', 'policy_gender', 'policy_place', 'policy_reg', 'policy_fact', 'policy_dob', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob'];
+        ? [
+              'email',
+              'phone',
+              'insured_fio',
+              'insured_doc',
+              'insured_serial',
+              'insured_number',
+              'insured_gender',
+              'insured_reg',
+              'insured_fact',
+              'insured_dob',
+          ]
+        : [
+              'email',
+              'phone',
+              'policy_fio',
+              'policy_doc',
+              'policy_serial',
+              'policy_number',
+              'policy_gender',
+              'policy_place',
+              'policy_reg',
+              'policy_fact',
+              'policy_dob',
+              'insured_fio',
+              'insured_doc',
+              'insured_serial',
+              'insured_number',
+              'insured_gender',
+              'insured_reg',
+              'insured_fact',
+              'insured_dob',
+          ];
 
     useEffect(() => {
         const allFieldsFilled = requiredFields.every((field) => formData[field]);
@@ -132,7 +172,6 @@ export const FormPage = () => {
         setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
     }, [formData, checked, formErrors, requiredFields]);
 
-
     return (
         <React.Fragment>
             <div>
@@ -141,24 +180,24 @@ export const FormPage = () => {
                 </h2>
                 <form name='form'>
                     <FormHeader />
-                    <FormProgramParameters parameters={parameters}/>
-                    <FormContactInfo 
-                        handleChange={handleChangeFormInput} 
+                    <FormProgramParameters parameters={parameters} />
+                    <FormContactInfo
+                        handleChange={handleChangeFormInput}
                         errors={formErrors}
                         formData={formData}
                     />
                     {isChild && (
-                        <FormPolicyholderInfo 
-                            handleChange={handleChangeFormInput} 
-                            handleSelectChange={handleSelectChange} 
+                        <FormPolicyholderInfo
+                            handleChange={handleChangeFormInput}
+                            handleSelectChange={handleSelectChange}
                             handleDateChange={handleDateChange}
                             formData={formData}
                         />
                     )}
-                    <FormInsuredPersonInfo 
-                        isChild={isChild} 
-                        handleChange={handleChangeFormInput} 
-                        handleSelectChange={handleSelectChange} 
+                    <FormInsuredPersonInfo
+                        isChild={isChild}
+                        handleChange={handleChangeFormInput}
+                        handleSelectChange={handleSelectChange}
                         handleDateChange={handleDateChange}
                         formData={formData}
                     />
@@ -171,8 +210,8 @@ export const FormPage = () => {
                             label={
                                 <div className={styles.checkbox_label}>
                                     Я согласен на{' '}
-                                    <span className='highlight'>обработку персональных данных</span> и
-                                    ознакомился с{' '}
+                                    <span className='highlight'>обработку персональных данных</span>{' '}
+                                    и ознакомился с{' '}
                                     <span className='highlight'>
                                         Политикой в отношении обработки персональных данных
                                     </span>
@@ -186,8 +225,8 @@ export const FormPage = () => {
                             checked={checked.delegate}
                             label={
                                 <div className={styles.checkbox_label}>
-                                    Я подтверждаю, что являюсь законным представителем ребенка (нужен
-                                    текст)
+                                    Я подтверждаю, что являюсь законным представителем ребенка
+                                    (нужен текст)
                                 </div>
                             }
                         />

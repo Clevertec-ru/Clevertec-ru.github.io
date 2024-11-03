@@ -11,6 +11,8 @@ import { Space } from '@alfalab/core-components/space';
 import { useNavigate } from 'react-router-dom';
 import { Roots } from '~/types/roots.ts';
 
+import { clearData, setWithKid } from '~/redux/slices/mock-slice.ts';
+
 export const InfoInputMethodModal = () => {
     const { INPUT_METHOD } = useSelector(modalsSelector);
     const dispatch = useDispatch();
@@ -18,6 +20,7 @@ export const InfoInputMethodModal = () => {
 
     const handleClick = () => {
         navigate(Roots.FORM);
+        dispatch(clearData());
         dispatch(
             setModalOpen({
                 modal: ModalNames.GOSUSLUG,
@@ -26,13 +29,16 @@ export const InfoInputMethodModal = () => {
         );
     };
 
-    const handleGosClick = () =>
+    const handleGosClick = () => {
+        dispatch(setWithKid());
+
         dispatch(
             setModalOpen({
                 modal: ModalNames.GOSUSLUG,
                 isOpen: true,
             }),
         );
+    };
 
     const onCancel = () =>
         dispatch(
