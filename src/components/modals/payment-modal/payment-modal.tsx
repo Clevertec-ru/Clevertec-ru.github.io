@@ -13,11 +13,12 @@ import styles from './payment.module.css';
 import { type ChangeEvent, useState } from 'react';
 import { Radio } from '@alfalab/core-components/radio';
 
-import { setIsVisa } from '~/redux/slices/app-slice.ts';
+import { emailSelector, setIsVisa } from '~/redux/slices/app-slice.ts';
 import { insuranceAmountSelector } from '~/redux/slices/offer-form.ts';
 
 export const PaymentModal = () => {
     const amountValue = useSelector(insuranceAmountSelector);
+    const email = useSelector(emailSelector);
 
     const [value, setValue] = useState('notVisa');
 
@@ -69,8 +70,8 @@ export const PaymentModal = () => {
                     defaultMargins={true}
                 >
                     Мы отправили проект договора и страховой документации по адресу&nbsp;
-                    <b>ivanivanov@test.ru</b>. Внимательно ознакомьтесь и подтвердите свое согласие
-                    с условиями заключаемого договора
+                    <b>{email}</b>. Внимательно ознакомьтесь и подтвердите свое согласие с условиями
+                    заключаемого договора
                 </Typography.Text>
                 <Space size={20} className={styles.checkboxContainer}>
                     <Checkbox
