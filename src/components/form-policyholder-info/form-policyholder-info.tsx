@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent } from 'react';
 
 import { Calendar } from '@alfalab/core-components/calendar';
 import { Grid } from '@alfalab/core-components/grid';
@@ -9,17 +9,22 @@ import { UniversalDateInput } from '@alfalab/core-components/universal-date-inpu
 import { DOCUMENT_OPTIONS, GENDER_OPTIONS } from '~/constants/options';
 import { GENERAL_SETTINGS } from '~/constants/general-settings';
 import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
+import { FormDataType } from '~/types/form';
 
 interface FormPolicyholderInfoProps {
     handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
     handleSelectChange: (payload: BaseSelectChangePayload) => void;
     handleDateChange: (fieldName: string) => (date: Date | null, value: string) => void;
+    formData: FormDataType;
 }
 
-export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleDateChange }: FormPolicyholderInfoProps) => {
+export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleDateChange, formData }: FormPolicyholderInfoProps) => {
     const styleRow = {
         marginTop: '30px',
     };
+
+    const selectedGenderIndex = GENDER_OPTIONS.find((gender) => gender.value === formData.insured_gender)?.key;
+    const selectedDocumentIndex = DOCUMENT_OPTIONS.find((gender) => gender.value === formData.insured_doc)?.key;
 
     return (
         <section>
@@ -27,7 +32,14 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
             <div style={styleRow}>
                 <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input placeholder='Ф.И.О.' label='Ф.И.О.' block={true} name='policy_fio' onChange={handleChange}/>
+                        <Input 
+                            placeholder='Ф.И.О.' 
+                            label='Ф.И.О.' 
+                            block={true} 
+                            name='policy_fio' 
+                            onChange={handleChange}
+                            value={formData.policy_fio || undefined}
+                        />
                     </Grid.Col>
                 </Grid.Row>
             </div>
@@ -42,6 +54,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             options={DOCUMENT_OPTIONS}
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleSelectChange}
+                            selected={selectedDocumentIndex}
                         />
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
@@ -53,15 +66,17 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                                 maxLength={4} 
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
+                                value={formData.policy_fio || undefined}
                             />
                             <Input
                                 placeholder='Номер'
                                 name='policy_number'
-                                maxLength={6}
+                                max={6}
                                 type='number'
                                 label='Номер'
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
+                                value={formData.policy_fio || undefined}
                             />
                         </Space>
                     </Grid.Col>
@@ -79,6 +94,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             Calendar={Calendar}
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleDateChange('policy_dob')}
+                            value={formData.policy_dob}
                         />
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH} className='gaps'>
@@ -91,6 +107,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             options={GENDER_OPTIONS}
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleSelectChange}
+                            selected={selectedGenderIndex}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -104,6 +121,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             label='Место рождения' 
                             block={true}
                             onChange={handleChange}
+                            value={formData.policy_place || undefined}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -117,6 +135,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             label='Адрес регистрации'
                             block={true}
                             onChange={handleChange}
+                            value={formData.policy_reg || undefined}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -130,6 +149,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             label='Фактический адрес проживания:'
                             block={true}
                             onChange={handleChange}
+                            value={formData.policy_fact || undefined}
                         />
                     </Grid.Col>
                 </Grid.Row>

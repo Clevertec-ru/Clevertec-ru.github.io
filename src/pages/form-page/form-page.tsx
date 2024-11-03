@@ -1,8 +1,6 @@
 import React, { type ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-
 import { Checkbox } from '@alfalab/core-components/checkbox';
 import { CustomButton } from '@alfalab/core-components/custom-button';
-
 import { Footer } from '../../components/footer';
 import { FormContactInfo } from '../../components/form-contact-info/form-contact-info';
 import { FormHeader } from '../../components/form-header/form-header';
@@ -28,13 +26,20 @@ export const FormPage = () => {
         agree: false,
         delegate: false,
     });
-
-    const [formData, setFormData] = useState<{ [key: string]: string }>({});
+    const [formData, setFormData] = useState<{ [key: string]: string }>({email: 'test@mail.ru', insured_doc: 'svidetelstvo', insured_gender: 'male', insured_dob: '11.02.2022'});
+    const [formErrors, setFormErrors] = useState<{ [key: string]: string | null }>({
+        email: null,
+        phone: null,
+    });
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const parameters = useAppSelector(offerFormSelector);
-
     const isChild = parameters.insuranceFor === 'child';
+
+    const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    const validatePhone = (value: string) => {
+        return /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
+    };
 
     const handleClick = () =>
         dispatch(
@@ -44,7 +49,7 @@ export const FormPage = () => {
             }),
         );
 
-    const handleChange = (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeCheckbox = (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
         setChecked((prevState) => ({
             ...prevState,
             [name]: event.target.checked,
@@ -53,7 +58,7 @@ export const FormPage = () => {
 
     const logoClickHandler = () => {
         navigate('/');
-    }
+    };
 
     const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -73,10 +78,33 @@ export const FormPage = () => {
         }, DEBOUNCE_DELAY);
     }, [updateFormData]);
 
+    const handleDebouncedValidation = useCallback((name: string, value: string) => {
+        if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+        }
+
+        debounceTimer.current = setTimeout(() => {
+            setFormErrors((prevErrors) => ({
+                ...prevErrors,
+                [name]: 
+                    name === 'email' 
+                        ? validateEmail(value) ? null : 'Некорректный email' 
+                        : validatePhone(value) ? null : 'Некорректный номер телефона'
+            }));
+        }, DEBOUNCE_DELAY);
+    }, []);
 
     const handleChangeFormInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        debouncedUpdateFormData(name, value);
+
+        if (name === 'email' || name === 'phone') {
+            handleDebouncedValidation(name, value);
+        }
+
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
 
     const handleSelectChange = (payload: BaseSelectChangePayload) => {
@@ -89,8 +117,8 @@ export const FormPage = () => {
     };
 
     useEffect(() => {
-        window.scrollTo(0,0);
-    }, [])
+        window.scrollTo(0, 0);
+    }, []);
 
     const requiredFields = !isChild
         ? ['email', 'phone', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob']
@@ -99,11 +127,11 @@ export const FormPage = () => {
     useEffect(() => {
         const allFieldsFilled = requiredFields.every((field) => formData[field]);
         const allChecked = checked.agree && checked.delegate;
+        const isContactInfoValid = !formErrors.email && !formErrors.phone;
 
-        setIsButtonDisabled(!(allFieldsFilled && allChecked));
-    }, [formData, checked, requiredFields]);
+        setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
+    }, [formData, checked, formErrors, requiredFields]);
 
-    console.log(formData)
 
     return (
         <React.Fragment>
@@ -114,12 +142,17 @@ export const FormPage = () => {
                 <form name='form'>
                     <FormHeader />
                     <FormProgramParameters parameters={parameters}/>
-                    <FormContactInfo handleChange={handleChangeFormInput}/>
-                    {isChild &&  (
+                    <FormContactInfo 
+                        handleChange={handleChangeFormInput} 
+                        errors={formErrors}
+                        formData={formData}
+                    />
+                    {isChild && (
                         <FormPolicyholderInfo 
                             handleChange={handleChangeFormInput} 
                             handleSelectChange={handleSelectChange} 
                             handleDateChange={handleDateChange}
+                            formData={formData}
                         />
                     )}
                     <FormInsuredPersonInfo 
@@ -127,12 +160,13 @@ export const FormPage = () => {
                         handleChange={handleChangeFormInput} 
                         handleSelectChange={handleSelectChange} 
                         handleDateChange={handleDateChange}
+                        formData={formData}
                     />
                     <section style={{ border: 'none', padding: 0 }}>
                         <Checkbox
                             block={true}
                             size={24}
-                            onChange={handleChange('agree')}
+                            onChange={handleChangeCheckbox('agree')}
                             checked={checked.agree}
                             label={
                                 <div className={styles.checkbox_label}>
@@ -148,7 +182,7 @@ export const FormPage = () => {
                         <Checkbox
                             block={true}
                             size={24}
-                            onChange={handleChange('delegate')}
+                            onChange={handleChangeCheckbox('delegate')}
                             checked={checked.delegate}
                             label={
                                 <div className={styles.checkbox_label}>
