@@ -24,8 +24,8 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
         marginTop: '30px',
     };
 
-    const selectedGenderIndex = GENDER_OPTIONS.find((gender) => gender.value === formData.insured_gender)?.key;
-    const selectedDocumentIndex = DOCUMENT_OPTIONS.find((gender) => gender.value === formData.insured_doc)?.key;
+    const selectedGenderIndex = GENDER_OPTIONS.find((gender) => gender.value === formData.policy_gender)?.key;
+    const selectedDocumentIndex = DOCUMENT_OPTIONS.find((gender) => gender.value === formData.policy_doc)?.key;
 
     return (
         <section>

@@ -17,4 +17,6 @@
     color: #252429 !important;
     cursor: default !important;
     margin-bottom: var(--gap-20);
+    display: flex;
+    justify-content: space-between;
 }
