@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { Checkbox } from '@alfalab/core-components/checkbox';
 import { CustomButton } from '@alfalab/core-components/custom-button';
 import { Footer } from '../../components/footer';
@@ -32,16 +32,21 @@ export const FormPage = () => {
     const [formErrors, setFormErrors] = useState<{ [key: string]: string | null }>({
         email: null,
         phone: null,
+        insured_serial: null,
+        insured_number: null,
+        policy_serial: null,
+        policy_number: null
     });
+
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const parameters = useAppSelector(offerFormSelector);
     const isChild = parameters.insuranceFor === 'child';
 
     const validateEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    const validatePhone = (value: string) => {
-        return /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
-    };
+    const validatePhone = (value: string) => /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(value);
+    const validatePassportSerial = (value: string) => /^\d{4}$/.test(value);
+    const validatePassportNumber = (value: string) => /^\d{6}$/.test(value);
 
     const handleClick = () =>
         dispatch(
@@ -71,17 +76,14 @@ export const FormPage = () => {
         }));
     }, []);
 
-    const debouncedUpdateFormData = useCallback(
-        (fieldName: string, value: string) => {
-            if (debounceTimer.current) {
-                clearTimeout(debounceTimer.current);
-            }
-            debounceTimer.current = setTimeout(() => {
-                updateFormData(fieldName, value);
-            }, DEBOUNCE_DELAY);
-        },
-        [updateFormData],
-    );
+    const debouncedUpdateFormData = useCallback((fieldName: string, value: string) => {
+        if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+        }
+        debounceTimer.current = setTimeout(() => {
+            updateFormData(fieldName, value);
+        }, DEBOUNCE_DELAY);
+    }, [updateFormData]);
 
     const handleDebouncedValidation = useCallback((name: string, value: string) => {
         if (debounceTimer.current) {
@@ -93,12 +95,14 @@ export const FormPage = () => {
                 ...prevErrors,
                 [name]:
                     name === 'email'
-                        ? validateEmail(value)
-                            ? null
-                            : 'Некорректный email'
-                        : validatePhone(value)
-                          ? null
-                          : 'Некорректный номер телефона',
+                        ? validateEmail(value) ? null : 'Некорректный email'
+                        : name === 'phone'
+                        ? validatePhone(value) ? null : 'Некорректный номер телефона'
+                        : name.endsWith('_serial')
+                        ? validatePassportSerial(value) ? null : 'Некорректная серия паспорта'
+                        : name.endsWith('_number')
+                        ? validatePassportNumber(value) ? null : 'Некорректный номер паспорта'
+                        : null,
             }));
         }, DEBOUNCE_DELAY);
     }, []);
@@ -106,7 +110,7 @@ export const FormPage = () => {
     const handleChangeFormInput = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
 
-        if (name === 'email' || name === 'phone') {
+        if (['email', 'phone', 'insured_serial', 'insured_number', 'policy_serial', 'policy_number'].includes(name)) {
             handleDebouncedValidation(name, value);
         }
 
@@ -127,42 +131,22 @@ export const FormPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        if (isChild) {
+            setFormData((prevData) => ({
+                ...prevData,
+                insured_dob: parameters.birthDate,
+            }))
+        } else {
+            setFormData((prevData) => ({
+                ...prevData,
+                policy_dob: parameters.birthDate,
+            }))
+        }
     }, []);
 
     const requiredFields = !isChild
-        ? [
-              'email',
-              'phone',
-              'insured_fio',
-              'insured_doc',
-              'insured_serial',
-              'insured_number',
-              'insured_gender',
-              'insured_reg',
-              'insured_fact',
-              'insured_dob',
-          ]
-        : [
-              'email',
-              'phone',
-              'policy_fio',
-              'policy_doc',
-              'policy_serial',
-              'policy_number',
-              'policy_gender',
-              'policy_place',
-              'policy_reg',
-              'policy_fact',
-              'policy_dob',
-              'insured_fio',
-              'insured_doc',
-              'insured_serial',
-              'insured_number',
-              'insured_gender',
-              'insured_reg',
-              'insured_fact',
-              'insured_dob',
-          ];
+        ? ['email', 'phone', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob']
+        : ['email', 'phone', 'policy_fio', 'policy_doc', 'policy_serial', 'policy_number', 'policy_gender', 'policy_place', 'policy_reg', 'policy_fact', 'policy_dob', 'insured_fio', 'insured_doc', 'insured_serial', 'insured_number', 'insured_gender', 'insured_reg', 'insured_fact', 'insured_dob'];
 
     useEffect(() => {
         const allFieldsFilled = requiredFields.every((field) => formData[field]);
@@ -171,6 +155,7 @@ export const FormPage = () => {
 
         setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
     }, [formData, checked, formErrors, requiredFields]);
+
 
     return (
         <React.Fragment>
@@ -181,24 +166,26 @@ export const FormPage = () => {
                 <form name='form'>
                     <FormHeader />
                     <FormProgramParameters parameters={parameters} />
-                    <FormContactInfo
-                        handleChange={handleChangeFormInput}
+                    <FormContactInfo 
+                        handleChange={handleChangeFormInput} 
                         errors={formErrors}
                         formData={formData}
                     />
                     {isChild && (
-                        <FormPolicyholderInfo
-                            handleChange={handleChangeFormInput}
-                            handleSelectChange={handleSelectChange}
+                        <FormPolicyholderInfo 
+                            handleChange={handleChangeFormInput} 
+                            handleSelectChange={handleSelectChange} 
                             handleDateChange={handleDateChange}
+                            formErrors={formErrors}
                             formData={formData}
                         />
                     )}
-                    <FormInsuredPersonInfo
-                        isChild={isChild}
-                        handleChange={handleChangeFormInput}
-                        handleSelectChange={handleSelectChange}
+                    <FormInsuredPersonInfo 
+                        isChild={isChild} 
+                        handleChange={handleChangeFormInput} 
+                        handleSelectChange={handleSelectChange} 
                         handleDateChange={handleDateChange}
+                        formErrors={formErrors}
                         formData={formData}
                     />
                     <section style={{ border: 'none', padding: 0 }}>
@@ -210,8 +197,8 @@ export const FormPage = () => {
                             label={
                                 <div className={styles.checkbox_label}>
                                     Я согласен на{' '}
-                                    <span className='highlight'>обработку персональных данных</span>{' '}
-                                    и ознакомился с{' '}
+                                    <span className='highlight'>обработку персональных данных</span> и
+                                    ознакомился с{' '}
                                     <span className='highlight'>
                                         Политикой в отношении обработки персональных данных
                                     </span>
@@ -225,8 +212,8 @@ export const FormPage = () => {
                             checked={checked.delegate}
                             label={
                                 <div className={styles.checkbox_label}>
-                                    Я подтверждаю, что являюсь законным представителем ребенка
-                                    (нужен текст)
+                                    Я подтверждаю, что являюсь законным представителем ребенка (нужен
+                                    текст)
                                 </div>
                             }
                         />
