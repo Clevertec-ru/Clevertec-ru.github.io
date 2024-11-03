@@ -10,6 +10,7 @@ import { Typography } from '@alfalab/core-components/typography';
 
 import s from '../confirm-modals.module.css';
 import { GenericWrapper } from '@alfalab/core-components/generic-wrapper';
+import { offerFormSelector } from '~/redux/slices/offer-form.ts';
 export const GosuslugModal = () => {
     const navigate = useNavigate();
     const { GOSUSLUG } = useSelector(modalsSelector);

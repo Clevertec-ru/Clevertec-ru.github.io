@@ -67,8 +67,8 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                                 maxLength={4} 
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
-                                value={formData.policy_fio || undefined}
                                 error={formErrors.policy_serial}
+                                value={formData.policy_serial || undefined}
                             />
                             <Input
                                 placeholder='Номер'
@@ -78,8 +78,8 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                                 label='Номер'
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
-                                value={formData.policy_fio || undefined}
                                 error={formErrors.policy_number}
+                                value={formData.policy_number || undefined}
                             />
                         </Space>
                     </Grid.Col>

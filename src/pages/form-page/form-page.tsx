@@ -7,7 +7,7 @@ import { FormHeader } from '../../components/form-header/form-header';
 import { FormInsuredPersonInfo } from '../../components/form-insured-person-info/form-insured-person-info';
 import { FormPolicyholderInfo } from '../../components/form-policyholder-info/form-policyholder-info';
 import { FormProgramParameters } from '../../components/form-program-parameters/form-program-parameters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ModalNames, setModalOpen } from '~/redux/slices/modals.ts';
 import { useAppSelector } from '~/hooks/typed-react-redux-hooks';
 import { offerFormSelector } from '~/redux/slices/offer-form';
@@ -15,10 +15,12 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './form-page.module.css';
 import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
+import { bigFormSelector } from '~/redux/slices/mock-slice.ts';
 
 const DEBOUNCE_DELAY = 300;
 
 export const FormPage = () => {
+    const initialFormData = useSelector(bigFormSelector);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ export const FormPage = () => {
         agree: false,
         delegate: false,
     });
-    const [formData, setFormData] = useState<{ [key: string]: string }>({});
+    const [formData, setFormData] = useState<{ [key: string]: string }>(initialFormData);
     const [formErrors, setFormErrors] = useState<{ [key: string]: string | null }>({
         email: null,
         phone: null,
@@ -153,6 +155,7 @@ export const FormPage = () => {
 
         setIsButtonDisabled(!(allFieldsFilled && allChecked && isContactInfoValid));
     }, [formData, checked, formErrors, requiredFields]);
+
 
     return (
         <React.Fragment>
