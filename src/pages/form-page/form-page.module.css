@@ -10,6 +10,14 @@
     color: #666668;
 }
 
+.form_input {
+    background: #f4f4f5;
+}
+
+.form_input [class^='select__field'] {
+    background: #f4f4f5;
+}
+
 @media screen and (max-width: 1024px) {
     .logo {
         margin-left: var(--left-tablet-margin);

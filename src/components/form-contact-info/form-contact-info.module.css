@@ -5,3 +5,7 @@
     align-items: center;
     gap: 8px;
 }
+
+.form_input {
+    background: #f4f4f5;
+}

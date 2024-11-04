@@ -215,10 +215,10 @@ export const FormPage = () => {
     useEffect(() => {
         if (!Object.keys(initialFormData).length) {
             setFormData({
-                'insured_dob': parameters.birthDate,
-            })
+                insured_dob: parameters.birthDate,
+            });
         }
-    }, [parameters])
+    }, [parameters]);
 
     return (
         <React.Fragment>

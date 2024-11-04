@@ -11,6 +11,8 @@ import { GENERAL_SETTINGS } from '~/constants/general-settings';
 import { BaseSelectChangePayload } from '@alfalab/core-components/select/typings';
 import { FormDataType, FormErrorsType } from '~/types/form';
 
+import styles from '~/pages/form-page/form-page.module.css';
+
 interface FormPolicyholderInfoProps {
     handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
     handleSelectChange: (payload: BaseSelectChangePayload) => void;
@@ -19,13 +21,23 @@ interface FormPolicyholderInfoProps {
     formData: FormDataType;
 }
 
-export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleDateChange, formErrors, formData }: FormPolicyholderInfoProps) => {
+export const FormPolicyholderInfo = ({
+    handleChange,
+    handleSelectChange,
+    handleDateChange,
+    formErrors,
+    formData,
+}: FormPolicyholderInfoProps) => {
     const styleRow = {
         marginTop: '30px',
     };
 
-    const selectedGenderIndex = GENDER_OPTIONS.find((gender) => gender.value === formData.policy_gender)?.key;
-    const selectedDocumentIndex = DOCUMENT_OPTIONS.find((gender) => gender.value === formData.policy_doc)?.key;
+    const selectedGenderIndex = GENDER_OPTIONS.find(
+        (gender) => gender.value === formData.policy_gender,
+    )?.key;
+    const selectedDocumentIndex = DOCUMENT_OPTIONS.find(
+        (gender) => gender.value === formData.policy_doc,
+    )?.key;
 
     return (
         <section>
@@ -33,13 +45,14 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
             <div style={styleRow}>
                 <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input 
-                            placeholder='Ф.И.О.' 
-                            label='Ф.И.О.' 
-                            block={true} 
-                            name='policy_fio' 
+                        <Input
+                            placeholder='Иванов Иван Иванович'
+                            label='Ф.И.О.'
+                            block={true}
+                            name='policy_fio'
                             onChange={handleChange}
                             value={formData.policy_fio || undefined}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -56,19 +69,21 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleSelectChange}
                             selected={selectedDocumentIndex}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
-                            <Input 
-                                placeholder='Серия' 
-                                name='policy_serial' 
-                                label='Серия' 
-                                maxLength={4} 
+                            <Input
+                                placeholder='Серия'
+                                name='policy_serial'
+                                label='Серия'
+                                maxLength={4}
                                 {...GENERAL_SETTINGS.INPUT_PROPS}
                                 onChange={handleChange}
                                 error={formErrors.policy_serial}
                                 value={formData.policy_serial || undefined}
+                                fieldClassName={styles.form_input}
                             />
                             <Input
                                 placeholder='Номер'
@@ -80,6 +95,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                                 onChange={handleChange}
                                 error={formErrors.policy_number}
                                 value={formData.policy_number || undefined}
+                                fieldClassName={styles.form_input}
                             />
                         </Space>
                     </Grid.Col>
@@ -98,6 +114,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleDateChange('policy_dob')}
                             value={formData.policy_dob}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH} className='gaps'>
@@ -111,6 +128,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             {...GENERAL_SETTINGS.INPUT_PROPS}
                             onChange={handleSelectChange}
                             selected={selectedGenderIndex}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -118,13 +136,14 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
             <div style={styleRow}>
                 <Grid.Row>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
-                        <Input 
-                            placeholder='Место рождения' 
-                            name='policy_place' 
-                            label='Место рождения' 
+                        <Input
+                            placeholder='Место рождения'
+                            name='policy_place'
+                            label='Место рождения'
                             block={true}
                             onChange={handleChange}
                             value={formData.policy_place || undefined}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -139,6 +158,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             block={true}
                             onChange={handleChange}
                             value={formData.policy_reg || undefined}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                 </Grid.Row>
@@ -153,6 +173,7 @@ export const FormPolicyholderInfo = ({ handleChange, handleSelectChange, handleD
                             block={true}
                             onChange={handleChange}
                             value={formData.policy_fact || undefined}
+                            fieldClassName={styles.form_input}
                         />
                     </Grid.Col>
                 </Grid.Row>

@@ -21,6 +21,11 @@
     }
 }
 
+.activeBtn:disabled {
+    background-color: #c5cad2 !important;
+    color: var(--color-light-bg-primary) !important;
+}
+
 .formWrapper {
     background: var(--color-light-bg-primary);
     padding: 44px var(--gap-40) var(--gap-40);
