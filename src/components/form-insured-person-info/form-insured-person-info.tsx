@@ -77,7 +77,7 @@ export const FormInsuredPersonInfo = ({
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
                             <Input
-                                placeholder='Серия'
+                                placeholder='Серия паспорта'
                                 name='insured_serial'
                                 label='Серия'
                                 maxLength={4}
@@ -88,7 +88,7 @@ export const FormInsuredPersonInfo = ({
                                 fieldClassName={styles.form_input}
                             />
                             <Input
-                                placeholder='Номер'
+                                placeholder='Номер паспорта'
                                 name='insured_number'
                                 maxLength={6}
                                 label='Номер'

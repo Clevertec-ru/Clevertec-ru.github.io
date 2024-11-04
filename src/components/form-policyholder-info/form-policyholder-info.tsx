@@ -75,7 +75,7 @@ export const FormPolicyholderInfo = ({
                     <Grid.Col width={GENERAL_SETTINGS.COLUMNS_WIDTH}>
                         <Space direction='horizontal' className='gaps' fullWidth={true}>
                             <Input
-                                placeholder='Серия'
+                                placeholder='Серия паспорта'
                                 name='policy_serial'
                                 label='Серия'
                                 maxLength={4}
@@ -86,7 +86,7 @@ export const FormPolicyholderInfo = ({
                                 fieldClassName={styles.form_input}
                             />
                             <Input
-                                placeholder='Номер'
+                                placeholder='Номер паспорта'
                                 name='policy_number'
                                 maxLength={6}
                                 type='number'

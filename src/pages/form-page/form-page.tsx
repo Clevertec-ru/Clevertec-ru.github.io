@@ -154,17 +154,10 @@ export const FormPage = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (isChild) {
             setFormData((prevData) => ({
                 ...prevData,
                 insured_dob: parameters.birthDate,
             }));
-        } else {
-            setFormData((prevData) => ({
-                ...prevData,
-                policy_dob: parameters.birthDate,
-            }));
-        }
     }, []);
 
     const requiredFields = !isChild

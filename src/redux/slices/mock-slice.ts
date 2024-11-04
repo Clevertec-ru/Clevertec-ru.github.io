@@ -47,9 +47,7 @@ export const mockSlice = createSlice({
                 policy_fact: 'г. Москва, ул. Пушкина 2/1',
             });
         },
-        clearData: (state) => {
-            Object.assign(state, { ...initialState });
-        },
+        clearData: () => initialState,
     },
     selectors: {
         bigFormSelector: (state) => state,
