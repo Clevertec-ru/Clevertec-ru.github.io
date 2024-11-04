@@ -26,6 +26,7 @@
 
 .content {
     padding: 28px var(--gap-64) var(--gap-40) !important;
+    text-align: center;
 }
 
 
