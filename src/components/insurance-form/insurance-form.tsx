@@ -60,6 +60,7 @@ export const InsuranceForm = () => {
                     label={<span className={styles.label}>Начало страхования</span>}
                     minDate={TODAY.valueOf()}
                     block={true}
+                    className={styles.inputWrapper}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
                     filledClassName={styles.filled}

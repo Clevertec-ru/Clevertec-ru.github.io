@@ -1,9 +1,9 @@
-.selectBlock [class^='select__field'] {
-    height: 56px;
-}
-
 .select {
     padding: var(--gap-40) var(--gap-0);
+}
+
+.selectBlock [class^='select__field'] {
+    background: #f4f4f5;
 }
 
 .inputs {
@@ -29,8 +29,8 @@
 }
 
 .inputBlock {
+    background: #f4f4f5;
     width: 170px;
-    height: 56px;
 }
 
 @media (max-width: 720px) {

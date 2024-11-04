@@ -33,9 +33,9 @@ export const InsuranceModalForm = () => {
                     label={<span className={styles.label}>Дата рождения</span>}
                     minDate={DATE_1920.valueOf()}
                     maxDate={TODAY.valueOf()}
-                    className={styles.inputWrapper}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
+                    filledClassName={styles.filled}
                     block={true}
                 />
                 <CalendarInputField
@@ -44,6 +44,7 @@ export const InsuranceModalForm = () => {
                     minDate={TODAY.valueOf()}
                     fieldClassName={styles.inputBlock}
                     focusedClassName={styles.focused}
+                    filledClassName={styles.filled}
                     block={true}
                 />
             </div>

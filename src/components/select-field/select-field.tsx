@@ -49,6 +49,7 @@ export const SelectField: React.FC<SelectFieldProps> = ({
             onChange={handleChange}
             // error={fieldError}
             options={options}
+            size={'m'}
         />
     );
 };

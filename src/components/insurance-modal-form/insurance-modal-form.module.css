@@ -3,7 +3,7 @@
 }
 
 .selectBlock [class^='select__field'] {
-    height: 56px;
+    background: #f4f4f5;
 }
 
 .inputs {
@@ -14,7 +14,7 @@
 }
 
 .inputBlock {
-    height: 56px;
+    background: #f4f4f5;
 }
 
 .inputBlock .label {
@@ -23,6 +23,11 @@
 }
 
 .focused .label {
+    white-space: nowrap;
+    overflow-wrap: normal;
+}
+
+.filled .label {
     white-space: nowrap;
     overflow-wrap: normal;
 }

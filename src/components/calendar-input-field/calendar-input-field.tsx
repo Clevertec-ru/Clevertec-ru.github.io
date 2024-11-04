@@ -11,7 +11,6 @@ import {
     setOfferFormErrors,
     offerFormSelector,
 } from '~/redux/slices/offer-form';
-import { ApplicationState } from '~/redux/root-reducer';
 import { SHORT_DATE } from '~/constants/dates';
 import { useAppDispatch, useAppSelector } from '~/hooks/typed-react-redux-hooks';
 
@@ -57,6 +56,7 @@ export const CalendarInputField: React.FC<CalendarInputFieldProps> = ({
             value={fieldValue ? parse(fieldValue, SHORT_DATE, new Date()) : null}
             // error={fieldError}
             name={name}
+            size={'m'}
             // disableUserInput={isMobileCalendarView}
         />
     );
