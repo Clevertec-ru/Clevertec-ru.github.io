@@ -8,7 +8,7 @@
 .circle {
     position: relative;
     background-color: transparent !important;
-    border: 2px solid #ba875c !important;
+    border: 2px solid #dee3e6 !important;
 }
 
 .circle:before {
