@@ -6,6 +6,26 @@
 
 .header {
     padding: 45px var(--gap-64) 28px;
+
+    & > *:first-child > *:first-child {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header {
+        & > *:first-child > *:last-child button {
+            border-radius: 4px;
+            width: 32px;
+            height: 32px;
+            background: #f4f4f5;
+            transition: background 0.3s easy;
+
+            &:hover {
+                background: rgba(244, 244, 245, 0.11);
+            }
+        }
+    }
 }
 
 .modalContent {

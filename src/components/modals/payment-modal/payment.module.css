@@ -12,6 +12,22 @@
     }
 }
 
+@media (min-width: 1024px) {
+    .header {
+        & > *:first-child > *:last-child button {
+            border-radius: 4px;
+            width: 32px;
+            height: 32px;
+            background: #f4f4f5;
+            transition: background 0.3s easy;
+
+            &:hover {
+                background: rgba(244, 244, 245, 0.11);
+            }
+        }
+    }
+}
+
 .content {
     padding: var(--gap-0) var(--gap-64) 50px;
 }
@@ -72,7 +88,7 @@
 .circle {
     position: relative;
     background-color: transparent !important;
-    border: 2px solid #ba875c !important;
+    border: 2px solid #dee3e6 !important;
 }
 
 .circle:before {
