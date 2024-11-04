@@ -48,7 +48,7 @@ export const FormInsuredPersonInfo = ({
                 <Grid.Row gutter={GENERAL_SETTINGS.ROW_GUTTER}>
                     <Grid.Col width={GENERAL_SETTINGS.ROW_FULL_WIDTH}>
                         <Input
-                            placeholder='Ф.И.О.'
+                            placeholder='Иванов Иван Иванович'
                             label='Ф.И.О.'
                             block={true}
                             name='insured_fio'

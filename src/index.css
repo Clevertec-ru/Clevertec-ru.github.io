@@ -75,6 +75,9 @@ form {
         left: 50%;
         transform: translateX(-50%);
     }
+}
+
+@media (max-width: 1023px) {
     .gaps {
         margin-top: 26px;
     }
